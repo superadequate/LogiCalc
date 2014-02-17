@@ -1,0 +1,81 @@
+LoanCompany_title,LoanType_name,LoanAdditionLookupValueType,Type,credit_score,vi1,vi2,vi3,vi4,vi5,vi6,vi7,vi8,vi9,vi10
+ACLE Loans,Used Vehicles,Loan to value,value_index,,60,70,80,90,100,110,120,130,140,150
+ACLE Loans,Used Vehicles,Loan to value,values,850,0,0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009
+ACLE Loans,Used Vehicles,Loan to value,values,759,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.011
+ACLE Loans,Used Vehicles,Loan to value,values,719,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.011,0.012,0.013
+ACLE Loans,Used Vehicles,Loan to value,values,679,0.006,0.007,0.008,0.009,0.01,0.011,0.012,0.013,0.014,0.015
+ACLE Loans,Used Vehicles,Loan to value,values,649,0.008,0.009,0.01,0.011,0.012,0.013,0.014,0.015,0.016,0.017
+ACLE Loans,Used Vehicles,Loan to value,values,599,0.01,0.011,0.012,0.013,0.014,0.015,0.016,0.017,0.018,0.019
+ACLE Loans,Used Vehicles,Loan to value,values,549,0.012,0.013,0.014,0.015,0.016,0.017,0.018,0.019,0.02,0.021
+ACLE Loans,Used Vehicles,Loan to value,values,449,0.014,0.015,0.016,0.017,0.018,0.019,0.02,0.021,0.022,0.023
+ACLE Loans,Used Vehicles,Loan to value,values,0,0.016,0.017,0.018,0.019,0.02,0.021,0.022,0.023,0.024,0.025
+ACLE Loans,Used Vehicles,Debt to income,value_index,,0,5,15,25,35,45,55,65,150,500
+ACLE Loans,Used Vehicles,Debt to income,values,850,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Debt to income,values,759,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Debt to income,values,719,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Debt to income,values,679,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Debt to income,values,649,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Debt to income,values,599,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Debt to income,values,549,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Debt to income,values,449,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Debt to income,values,0,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,Used Vehicles,Collateral age,value_index,,1900,1984,2004,2009,2012,2014,2014,2014,2014,2014
+ACLE Loans,Used Vehicles,Collateral age,values,850,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Collateral age,values,759,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Collateral age,values,719,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Collateral age,values,679,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Collateral age,values,649,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Collateral age,values,599,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Collateral age,values,549,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Collateral age,values,449,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Collateral age,values,0,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,Used Vehicles,Maximum term,value_index,,1900,1984,2007,2010,2012,2014,2014,2014,2014,2014
+ACLE Loans,Used Vehicles,Maximum term,values,850,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,Used Vehicles,Maximum term,values,759,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,Used Vehicles,Maximum term,values,719,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,Used Vehicles,Maximum term,values,679,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,Used Vehicles,Maximum term,values,649,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,Used Vehicles,Maximum term,values,599,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,Used Vehicles,Maximum term,values,549,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,Used Vehicles,Maximum term,values,449,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,Used Vehicles,Maximum term,values,0,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Loan to value,value_index,,60,70,80,90,100,110,120,130,140,150
+ACLE Loans,New Vehicles,Loan to value,values,850,-0.01,-0.009,-0.008,-0.007,-0.006,-0.005,-0.004,-0.003,-0.002,-0.001
+ACLE Loans,New Vehicles,Loan to value,values,759,-0.008,-0.007,-0.006,-0.005,-0.004,-0.003,-0.002,-0.001,0,0.001
+ACLE Loans,New Vehicles,Loan to value,values,719,-0.006,-0.005,-0.004,-0.003,-0.002,-0.001,0,0.001,0.002,0.003
+ACLE Loans,New Vehicles,Loan to value,values,679,-0.004,-0.003,-0.002,-0.001,0,0.001,0.002,0.003,0.004,0.005
+ACLE Loans,New Vehicles,Loan to value,values,649,-0.002,-0.001,0,0.001,0.002,0.003,0.004,0.005,0.006,0.007
+ACLE Loans,New Vehicles,Loan to value,values,599,0,0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009
+ACLE Loans,New Vehicles,Loan to value,values,549,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.011
+ACLE Loans,New Vehicles,Loan to value,values,449,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.011,0.012,0.013
+ACLE Loans,New Vehicles,Loan to value,values,0,0.006,0.007,0.008,0.009,0.01,0.011,0.012,0.013,0.014,0.015
+ACLE Loans,New Vehicles,Debt to income,value_index,,0,5,15,25,35,45,55,65,150,500
+ACLE Loans,New Vehicles,Debt to income,values,850,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Debt to income,values,759,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Debt to income,values,719,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Debt to income,values,679,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Debt to income,values,649,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Debt to income,values,599,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Debt to income,values,549,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Debt to income,values,449,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Debt to income,values,0,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
+ACLE Loans,New Vehicles,Collateral age,value_index,,1900,1984,2004,2009,2012,2014,2014,2014,2014,2014
+ACLE Loans,New Vehicles,Collateral age,values,850,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Collateral age,values,759,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Collateral age,values,719,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Collateral age,values,679,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Collateral age,values,649,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Collateral age,values,599,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Collateral age,values,549,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Collateral age,values,449,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Collateral age,values,0,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
+ACLE Loans,New Vehicles,Maximum term,value_index,,1900,1984,2007,2010,2012,2014,2014,2014,2014,2014
+ACLE Loans,New Vehicles,Maximum term,values,850,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Maximum term,values,759,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Maximum term,values,719,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Maximum term,values,679,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Maximum term,values,649,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Maximum term,values,599,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Maximum term,values,549,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Maximum term,values,449,36,42,48,60,72,72,72,72,72,72
+ACLE Loans,New Vehicles,Maximum term,values,0,36,42,48,60,72,72,72,72,72,72
