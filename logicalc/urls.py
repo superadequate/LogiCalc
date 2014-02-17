@@ -6,16 +6,13 @@ from django.contrib import admin
 
 from mezzanine.core.views import direct_to_template
 
-
 admin.autodiscover()
 
-# Add the urlpatterns for any custom Django applications here.
-# You can also change the ``home`` view to add your own functionality
-# to the project's homepage.
-
-urlpatterns = i18n_patterns("",
+urlpatterns = i18n_patterns(
+    "",
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
+    ("^calc/", include("lc_calc.urls")),
     ("^admin/", include(admin.site.urls)),
 )
 

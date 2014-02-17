@@ -7,8 +7,15 @@ from lc_calc.models import (LoanType,
                             LoanAdditionLookup)
 
 admin.site.register(LoanType)
-admin.site.register(LoanCompany)
 admin.site.register(LoanAdditionLookupValueType)
+
+
+class LoanCompanyAdmin(admin.ModelAdmin):
+    list_display = ['title', 'slug']
+    fields = ['title', 'slug', 'content', 'logo']
+    readonly_fields = ['slug']
+
+admin.site.register(LoanCompany, LoanCompanyAdmin)
 
 
 class LoanAdditionLookupAdmin(RelatedFieldAdmin):
