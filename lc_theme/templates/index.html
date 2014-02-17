@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block main %}
+    {% blocktrans %}
+        <h2>Welcome to LogiCalc!</h2>
+        <p>This site is currently in development. If you are not an authorised test user, contact us and we'll keep you up to
+            date with progress.
+        </p>
+        <p>
+            Welcome to your new Mezzanine powered website. This page and the pages in the above menu will change to suit
+            your need. You can edit most of the pages yourself either by logging in and clicking on the edit
+            buttons that appear or via the Admin interface. Don't be afraid to experiment!
+        </p>
+        <p>
+            Here are some quick links to get you started:
+        </p>
+        <ul>
+            <li><a href="/admin/">Log in to the admin interface</a></li>
+            <li>
+                <a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html#why-isn-t-the-homepage-a-page-object-i-can-edit-via-the-admin">Changing
+                    this homepage</a></li>
+            <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html">Frequently asked questions
+                about Mezzanine</a></li>
+        </ul>
+    {% endblocktrans %}
+{% endblock %}

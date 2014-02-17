@@ -249,8 +249,8 @@ INSTALLED_APPS = (
     "mezzanine.forms",
     "mezzanine.pages",
     "mezzanine.galleries",
-    "mezzanine.twitter",
-    #"mezzanine.accounts",
+    #"mezzanine.twitter",
+    "mezzanine.accounts",
     #"mezzanine.mobile",
 )
 
@@ -337,7 +337,8 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 #     "NEVERCACHE_KEY": NEVERCACHE_KEY,
 # }
 
-
+SITE_TITLE = "LogiCalc"
+SITE_TAGLINE = "An easier life for loan companies and their clients"
 ##################
 # LOCAL SETTINGS #
 ##################
