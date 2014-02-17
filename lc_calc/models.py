@@ -46,3 +46,18 @@ class LoanAdditionLookup(models.Model):
     credit_score = models.IntegerField(help_text="The minimum credit score for which this value is applicable.")
     value_index = models.IntegerField(help_text="The Addition lookup value (sheet column value).")
     value = models.FloatField(help_text="The value to use in the calculation.")
+
+    class Meta:
+        ordering = ['loan_company__title',
+                    'loan_type__name',
+                    'value_type__name',
+                    '-credit_score',
+                    'value_index']
+
+    def __str__(self):
+        return "{} | {} | {} | {} | {} | {} |".format(self.loan_company,
+                                            self.loan_type,
+                                            self.value_type,
+                                            self.value_index,
+                                            self.credit_score,
+                                            self.value)
