@@ -340,6 +340,21 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
 SITE_TITLE = "LogiCalc"
 SITE_TAGLINE = "An easier life for loan companies and their clients"
+
+
+class BaseSiteSetup(object):
+    """
+    Base site set up information
+    """
+    site_root = '/home/paul/live'
+    service_name = 'logicalc'
+    virtualenv = 'live'
+    user = 'paul'
+
+SITE_SETUP = BaseSiteSetup
+PROCESS_NAME = 'logicalc_live'
+GUNICORN_BIND = "127.0.0.1:8000"
+
 ##################
 # LOCAL SETTINGS #
 ##################
