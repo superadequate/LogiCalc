@@ -7,7 +7,6 @@ from django.conf import settings
 
 bind = settings.GUNICORN_BIND
 workers = multiprocessing.cpu_count() * 2 + 1
-worker_class = 'eventlet'
 
 preload_app = True
 
