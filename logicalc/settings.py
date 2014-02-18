@@ -1,5 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
+import os
+
+# project path is one up:
+_dirs = os.path.abspath(__file__).split('/')
+PROJECT_PATH = '/'.join(_dirs[0:-1])
+
 ######################
 # MEZZANINE SETTINGS #
 ######################
