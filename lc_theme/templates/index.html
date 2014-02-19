@@ -26,7 +26,7 @@
         <li>Check out an existing company calculator page:<br>
             <ul>
                 {% for company in loan_companies %}
-                    <li><a href="{% url "calculator_view" company.slug %}">{{ company.title }}</a></li>
+                    <li><a href="{% url "calculation_view" company.slug %}">{{ company.title }}</a></li>
                 {% endfor %}
             </ul>
         </li>
