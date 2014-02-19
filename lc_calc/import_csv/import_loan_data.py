@@ -2,7 +2,7 @@
 Import a csv file containing loan data into the db.
 """
 import csv
-from lc_calc.models import LoanCompany, LoanType, LoanAdditionLookupValueType, LoanAdditionLookup
+from lc_calc.models import LoanCompany, LoanType, LoanAdditionValueType, LoanAddition
 
 
 class LoanDataImporter(object):
@@ -24,11 +24,11 @@ class LoanDataImporter(object):
                 # Set the reference data and current indices
                 self.loan_company = self.get_or_create(LoanCompany, title=row['LoanCompany_title'])
                 self.loan_type = self.get_or_create(LoanType, name=row['LoanType_name'])
-                self.value_type = self.get_or_create(LoanAdditionLookupValueType, name=row['LoanAdditionLookupValueType'])
+                self.value_type = self.get_or_create(LoanAdditionValueType, name=row['LoanAdditionLookupValueType'])
                 self.value_indices = [(k, int(row[k])) for k in self.value_keys]
 
                 # Delete old values
-                for vo in LoanAdditionLookup.objects.filter(loan_company=self.loan_company,
+                for vo in LoanAddition.objects.filter(loan_company=self.loan_company,
                                                             loan_type=self.loan_type,
                                                             value_type=self.value_type,):
                     vo.delete()
@@ -36,7 +36,7 @@ class LoanDataImporter(object):
 
                 # Add the new values
                 for (value_index_key, value_index) in self.value_indices:
-                    loan_lookup_value = LoanAdditionLookup(
+                    loan_lookup_value = LoanAddition(
                         loan_company=self.loan_company,
                         loan_type=self.loan_type,
                         value_type=self.value_type,
