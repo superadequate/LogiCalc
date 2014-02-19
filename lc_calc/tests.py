@@ -31,6 +31,7 @@ class TestCalculations(TestCase):
                 'test_loanadditions.json']
 
     def test_rate_calculation(self):
+
         loan_company = LoanCompany.objects.get(slug='acle-loans')
         loan_type_used = LoanType.objects.get(name="Used Vehicles")
         loan_type_new = LoanType.objects.get(name="New Vehicles")
@@ -53,12 +54,40 @@ class TestCalculations(TestCase):
               'estimated_year_of_collateral': 2008,
               'loan_amount': 10000.00,
               'monthly_term': 48}, 0.023)]
+
         for (params, desired) in test_data:
             loan_calculation = LoanCalculation(**params)
             loan_calculation.save()  # necessary to calculate rate
             actual = loan_calculation.rate
-            import IPython; IPython.embed()
             self.assertAlmostEqual(actual, desired)
 
-    def test_estimate_remaining_term(self):
-        self.fail('not implemented')
+    def test_maximum_term(self):
+
+        loan_company = LoanCompany.objects.get(slug='acle-loans')
+        loan_type_used = LoanType.objects.get(name="Used Vehicles")
+        loan_type_new = LoanType.objects.get(name="New Vehicles")
+        test_data = [
+            ({'loan_company': loan_company,
+              'loan_type': loan_type_used,
+              'estimated_credit_score': 750,
+              'estimated_collateral_value': 15000.00,
+              'estimated_monthly_income': 6000.00,
+              'estimated_monthly_expenses': 4000.00,
+              'estimated_year_of_collateral': 1899,
+              'loan_amount': 10000.00,
+              'monthly_term': 48}, 36),
+            ({'loan_company': loan_company,
+              'loan_type': loan_type_new,
+              'estimated_credit_score': 750,
+              'estimated_collateral_value': 15000.00,
+              'estimated_monthly_income': 6000.00,
+              'estimated_monthly_expenses': 4000.00,
+              'estimated_year_of_collateral': 2008,
+              'loan_amount': 10000.00,
+              'monthly_term': 48}, 60)]
+
+        for (params, desired) in test_data:
+            loan_calculation = LoanCalculation(**params)
+            loan_calculation.save()  # necessary to calculate rate
+            actual = loan_calculation.maximum_term
+            self.assertAlmostEqual(actual, desired)

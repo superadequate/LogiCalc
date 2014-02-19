@@ -29,7 +29,7 @@
 {
     "pk": 4,
     "fields": {
-        "value_index_method_name": "_get_value_estimated_year_of_collateral",
+        "value_index_method_name": "_get_value_index_year_of_collateral",
         "sum_in_rate_calculation": false,
         "name": "Maximum term"
     },

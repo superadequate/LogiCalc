@@ -70,10 +70,12 @@ class LoanAdditionValueType(Named):
                                                choices=VALUE_INDEX_METHOD_NAME_CHOICES,
                                                default='_get_value_index_loan_to_value',
                                                help_text="Method used on LoanCalculation to lookup value_index")
-    sum_in_rate_calculation = models.BooleanField(default=True)
+    sum_in_rate_calculation = models.BooleanField(
+        default=True, help_text='If true, this type will be added into the rate calculation')
 
     def __str__(self):
-        vi_description = next((c[1] for c in self.VALUE_INDEX_METHOD_NAME_CHOICES if c[0] == self.value_index_method_name))
+        vi_description = next((c[1] for c in self.VALUE_INDEX_METHOD_NAME_CHOICES
+                               if c[0] == self.value_index_method_name))
         return "{} ({})".format(super().__str__(), vi_description)
 
 
@@ -124,6 +126,7 @@ class LoanCalculation(TimeStamped):
                                                        default=lambda: datetime.datetime.now().year)
     loan_amount = CurrencyField()
     monthly_term = models.IntegerField()
+    maximum_term = models.IntegerField()
     rate = models.FloatField()  # calculated in save
 
     def save(self, *args, **kwargs):
@@ -131,6 +134,7 @@ class LoanCalculation(TimeStamped):
             self.estimated_collateral_value = self.loan_amount * settings.LOAN_AMOUNT_TO_COLLATERAL_VALUE
         self.calculate_current_loan_estimated_remaining_term()
         self.calculate_rate()
+        self.calculate_maximum_term()
         super().save(*args, **kwargs)
 
     def calculate_current_loan_estimated_remaining_term(self):
@@ -145,9 +149,18 @@ class LoanCalculation(TimeStamped):
         credit_score = self.estimated_credit_score
         for value_type in LoanAdditionValueType.objects.all():
             if value_type.sum_in_rate_calculation:
-                value_index = getattr(self, value_type.value_index_method_name)()
-                rate += self.get_rate_addition(value_type, credit_score, value_index)
+                value_index = self.get_value_index(value_type)
+                rate += self.get_addition(value_type, credit_score, value_index)
         self.rate = rate
+
+    def calculate_maximum_term(self):
+        value_type = LoanAdditionValueType.objects.get(name='Maximum term')
+        credit_score = self.estimated_credit_score
+        value_index = self.get_value_index(value_type)
+        self.maximum_term = self.get_addition(value_type, credit_score, value_index)
+
+    def get_value_index(self, value_type):
+        return getattr(self, value_type.value_index_method_name)()
 
     def _get_value_index_loan_to_value(self):
         return (self.loan_amount / self.estimated_collateral_value) * 100.0
@@ -158,7 +171,7 @@ class LoanCalculation(TimeStamped):
     def _get_value_index_year_of_collateral(self):
         return self.estimated_year_of_collateral
 
-    def get_rate_addition(self, value_type, credit_score, value_index):
+    def get_addition(self, value_type, credit_score, value_index):
         loan_additions = LoanAddition.objects.filter(
             loan_company=self.loan_company,
             loan_type=self.loan_type,
