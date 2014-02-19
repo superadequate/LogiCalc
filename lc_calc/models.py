@@ -131,7 +131,7 @@ class LoanCalculation(TimeStamped):
 
     def save(self, *args, **kwargs):
         if self.estimated_collateral_value is None:
-            self.estimated_collateral_value = self.loan_amount * settings.LOAN_AMOUNT_TO_COLLATERAL_VALUE
+            self.estimated_collateral_value = self.loan_amount * Decimal(settings.LOAN_AMOUNT_TO_COLLATERAL_VALUE)
         self.calculate_current_loan_estimated_remaining_term()
         self.calculate_rate()
         self.calculate_maximum_term()
@@ -163,10 +163,10 @@ class LoanCalculation(TimeStamped):
         return getattr(self, value_type.value_index_method_name)()
 
     def _get_value_index_loan_to_value(self):
-        return (self.loan_amount / self.estimated_collateral_value) * 100.0
+        return (self.loan_amount / self.estimated_collateral_value) * Decimal(100.0)
 
     def _get_value_index_debt_to_income(self):
-        return (self.estimated_monthly_expenses / self.estimated_monthly_income) * 100.0
+        return (self.estimated_monthly_expenses / self.estimated_monthly_income) * Decimal(100.0)
 
     def _get_value_index_year_of_collateral(self):
         return self.estimated_year_of_collateral

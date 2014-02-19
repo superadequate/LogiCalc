@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load mezzanine_tags %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-md-4">
+            <img width="90%" src="{{ loan_company.logo.url }}"/>
+        </div>
+        <div class="col-md-8">
+            {{ loan_company.content|richtext_filters|safe }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <form action="" method="post">{% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <p>{{ field.errors }} {{ field.label_tag }} {{ field }}</p>
+                {%  endfor %}
+                <input type="submit" value="Submit"/>
+                <input type="hidden" name="loan_company_id" value="{{ loan_company.id }}" />
+            </form>
+        </div>
+    <div class="col-md-4">
+        <p>rate: {{ calculation.rate }}</p>
+        <p>maximum_term: {{ calculation.maximum_term }}</p>
+    </div>
+    </div>
+{% endblock main %}
