@@ -1,0 +1,38 @@
+[
+{
+    "pk": 1, 
+    "fields": {
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "sum_in_rate_calculation": true, 
+        "name": "Loan to value"
+    }, 
+    "model": "lc_calc.loanadditionvaluetype"
+},
+{
+    "pk": 2, 
+    "fields": {
+        "value_index_method_name": "_get_value_index_debt_to_income", 
+        "sum_in_rate_calculation": true, 
+        "name": "Debt to income"
+    }, 
+    "model": "lc_calc.loanadditionvaluetype"
+},
+{
+    "pk": 3, 
+    "fields": {
+        "value_index_method_name": "_get_value_estimated_year_of_collateral", 
+        "sum_in_rate_calculation": true, 
+        "name": "Collateral age"
+    }, 
+    "model": "lc_calc.loanadditionvaluetype"
+},
+{
+    "pk": 4, 
+    "fields": {
+        "value_index_method_name": "_get_value_estimated_year_of_collateral", 
+        "sum_in_rate_calculation": false, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditionvaluetype"
+}
+]
