@@ -6,7 +6,7 @@ from django.db import models
 from mezzanine.core.models import Slugged, RichText, TimeStamped
 from mezzanine.utils.urls import slugify
 
-from lc_calc.utils.excel_functions import nper
+from lc_calc.utils.excel_functions import nper, pmt
 
 
 class CurrencyField(models.DecimalField):
@@ -128,6 +128,7 @@ class LoanCalculation(TimeStamped):
     monthly_term = models.IntegerField()
     maximum_term = models.IntegerField()
     rate = models.FloatField()  # calculated in save
+    payment_amount = CurrencyField()  # calculated in save
 
     def save(self, *args, **kwargs):
         if self.estimated_collateral_value is None:
@@ -135,6 +136,7 @@ class LoanCalculation(TimeStamped):
         self.calculate_current_loan_estimated_remaining_term()
         self.calculate_rate()
         self.calculate_maximum_term()
+        self.calculate_payment_amount()
         super().save(*args, **kwargs)
 
     def calculate_current_loan_estimated_remaining_term(self):
@@ -182,3 +184,7 @@ class LoanCalculation(TimeStamped):
             return loan_additions[0].value
         else:
             return 0.0
+
+    def calculate_payment_amount(self):
+        self.payment_amount = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
+
