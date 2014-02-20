@@ -49,7 +49,6 @@ class CalculationView(LoanCompanyMixin, FormView):
 
     def form_valid(self, form):
         form.save()
-        form.instance = LoanCalculation.objects.get(id=form.instance.id)
         return redirect("calculation_view", **self.kwargs)
 
     def get_context_data(self, **kwargs):
