@@ -41,6 +41,9 @@ def nper(rate, pmt, pv):
     The future value, or a cash balance is 0.
     Payments are assumed to be made at the end of the period.
     """
+    pmt = float(pmt)  # may be a Decimal
+    pv = float(pv)  # may be a Decimal
+    rate = float(rate)  # getting paranoid
     return log10(pmt/(pmt + pv*rate))/log10(1 + rate)
 
 
@@ -56,6 +59,9 @@ def pmt(rate, nperiods, pv, fv=0, pmt_type=0):
     pmt=-if(rate=0,(pv+fv)/nper,(pv*((1+rate)^nper)+fv)/((1+rate*type)*((1+rate)^n
 per-1)/rate))
     """
+    pv = float(pv)  # may be a Decimal
+    rate = float(rate)
+    fv = float(fv)
     if rate == 0:
         result = (pv + fv) / nperiods
     else:

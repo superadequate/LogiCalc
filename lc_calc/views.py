@@ -49,6 +49,7 @@ class CalculationView(LoanCompanyMixin, FormView):
 
     def form_valid(self, form):
         form.save()
+        form.instance = LoanCalculation.objects.get(id=form.instance.id)
         self.request.session['calculation_id'] = form.instance.id
         return self.get(self.request, *self.args, **self.kwargs)
 

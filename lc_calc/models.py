@@ -128,7 +128,43 @@ class LoanCalculation(TimeStamped):
     monthly_term = models.IntegerField()
     maximum_term = models.IntegerField()
     rate = models.FloatField()  # calculated in save
-    payment_amount = CurrencyField()  # calculated in save
+    monthly_payment = CurrencyField()  # calculated in save
+
+    @property
+    def estimated_monthly_savings(self):
+        if self.current_loan_monthly_payment:
+            return self.current_loan_monthly_payment - self.monthly_payment
+        else:
+            return None
+
+    @property
+    def estimated_yearly_savings(self):
+        if self.estimated_monthly_savings:
+            return self.estimated_monthly_savings * 12
+        else:
+            return None
+
+    @property
+    def current_loan_remaining_interest(self):
+        if self.current_loan_balance and self.current_loan_monthly_payment:
+            principle_value = self.current_loan_balance
+            pmt = self.current_loan_monthly_payment
+            remaining_term = self.current_loan_estimated_remaining_term
+            return - (principle_value - (pmt * remaining_term))
+        else:
+            return None
+
+    @property
+    def loan_interest(self):
+        principle_value = self.loan_amount
+        pmt = self.monthly_payment
+        remaining_term = self.monthly_term
+        return - (principle_value - (pmt * remaining_term))
+
+    @property
+    def interest_savings(self):
+        if self.current_loan_remaining_interest:
+            return self.current_loan_remaining_interest - self.loan_interest
 
     def save(self, *args, **kwargs):
         if self.estimated_collateral_value is None:
@@ -136,7 +172,7 @@ class LoanCalculation(TimeStamped):
         self.calculate_current_loan_estimated_remaining_term()
         self.calculate_rate()
         self.calculate_maximum_term()
-        self.calculate_payment_amount()
+        self.calculate_monthly_payment()
         super().save(*args, **kwargs)
 
     def calculate_current_loan_estimated_remaining_term(self):
@@ -144,7 +180,7 @@ class LoanCalculation(TimeStamped):
             rate = self.current_loan_rate / 12.0
             pmt = -self.current_loan_monthly_payment
             pv = self.current_loan_balance
-            self.current_loan_estimated_remaining_term = nper(rate, pmt, pv)
+            self.current_loan_estimated_remaining_term = int(round(nper(rate, pmt, pv)))
 
     def calculate_rate(self):
         rate = 0.0
@@ -165,10 +201,10 @@ class LoanCalculation(TimeStamped):
         return getattr(self, value_type.value_index_method_name)()
 
     def _get_value_index_loan_to_value(self):
-        return (self.loan_amount / self.estimated_collateral_value) * Decimal(100.0)
+        return Decimal(self.loan_amount / self.estimated_collateral_value) * Decimal(100.0)
 
     def _get_value_index_debt_to_income(self):
-        return (self.estimated_monthly_expenses / self.estimated_monthly_income) * Decimal(100.0)
+        return Decimal(self.estimated_monthly_expenses / self.estimated_monthly_income) * Decimal(100.0)
 
     def _get_value_index_year_of_collateral(self):
         return self.estimated_year_of_collateral
@@ -185,6 +221,6 @@ class LoanCalculation(TimeStamped):
         else:
             return 0.0
 
-    def calculate_payment_amount(self):
-        self.payment_amount = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
+    def calculate_monthly_payment(self):
+        self.monthly_payment = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
 

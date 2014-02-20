@@ -12,7 +12,6 @@ class LoanCalculationForm(forms.ModelForm):
                   'current_loan_balance',
                   'current_loan_monthly_payment',
                   'current_loan_rate',
-                  'current_loan_estimated_remaining_term',
                   'estimated_credit_score',
                   'estimated_collateral_value',
                   'estimated_monthly_income',
