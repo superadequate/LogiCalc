@@ -1,5 +1,5 @@
 from django.views.generic.edit import FormView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 from lc_calc.models import LoanCompany, LoanCalculation
 from lc_calc.forms import LoanCalculationForm
@@ -50,8 +50,7 @@ class CalculationView(LoanCompanyMixin, FormView):
     def form_valid(self, form):
         form.save()
         form.instance = LoanCalculation.objects.get(id=form.instance.id)
-        self.request.session['calculation_id'] = form.instance.id
-        return self.get(self.request, *self.args, **self.kwargs)
+        return redirect("calculation_view", **self.kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
