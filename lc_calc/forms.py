@@ -20,6 +20,7 @@ class PercentageField(forms.DecimalField):
     def prepare_value(self, value):
         # On error recovery the value comes in as an already prepared string which is wierd
         if isinstance(value, Decimal):
+            print("prepare_value: {} -> {}".format(value, value*100))
             value *= 100
         return super().prepare_value(value)
 
@@ -28,13 +29,14 @@ class PercentageField(forms.DecimalField):
         if value is not None:
             if value < 0:
                 raise forms.ValidationError(self.error_messages['positive'])
+            print("clean_value: {} -> {}".format(value, value / 100))
             value = Decimal(value / 100)
         return value
 
 
 class LoanCalculationForm(forms.ModelForm):
     loan_company_id = forms.IntegerField(widget=forms.HiddenInput)
-    current_loan_rate = PercentageField(widget=PercentInput(attrs={'size': 4}))
+    # current_loan_rate = PercentageField(widget=PercentInput(attrs={'size': 4}))
 
     class Meta:
         model = LoanCalculation
@@ -73,9 +75,9 @@ class LoanCalculationForm(forms.ModelForm):
 
         # If all supplied, the loan must terminate (pmt > pv * (interest / 12)
         if all_good:
-            pmt = cleaned_data['current_loan_monthly_payment']
-            pv = cleaned_data['current_loan_balance']
-            rate = cleaned_data['current_loan_rate']
+            pmt = float(cleaned_data['current_loan_monthly_payment'])
+            pv = float(cleaned_data['current_loan_balance'])
+            rate = float(cleaned_data['current_loan_rate'])
             if pmt <= (rate / 12) * pv:
                 self._errors['current_loan_monthly_payment'] = self.error_class(
                     [_('is too small to ever pay the loan off')])
