@@ -49,6 +49,8 @@ class CalculationView(LoanCompanyMixin, FormView):
 
     def form_valid(self, form):
         form.save()
+        self.request.session['calculation_id'] = form.instance.id
+        self.request.session.set_expiry(3600)
         return redirect("calculation_view", **self.kwargs)
 
     def get_context_data(self, **kwargs):
