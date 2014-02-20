@@ -1,6 +1,110 @@
 {% extends "base.html" %}
 {% load mezzanine_tags %}
+{% block extra_js %}
+    {% if calculation.interest_savings %}
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
+        <script type="text/javascript">
+
+            // Load the Visualization API and the piechart package.
+            google.load('visualization', '1.0', {'packages': ['corechart']});
+
+            // Set a callback to run when the Google Visualization API is loaded.
+            google.setOnLoadCallback(drawChart);
+
+            // Callback that creates and populates a data table,
+            // instantiates the pie chart, passes in the data and
+            // draws it.
+            function drawChart() {
+
+                // Create the data table.
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Label');
+                data.addColumn('number', 'Value');
+                data.addRows([
+                    ['Remaining loan interest', {{ calculation.current_loan_remaining_interest }}],
+                    ['New loan interest', {{ calculation.loan_interest }}],
+                    ['Interest savings', {{ calculation.interest_savings }}]
+                ]);
+
+                // Set chart options
+                var options = {'title': 'Interest Comparison',
+                    'width': 400,
+                    'height': 300};
+
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.BarChart(document.getElementById('interest_comparison'));
+                chart.draw(data, options);
+            }
+        </script>
+
+        <script type="text/javascript">
+
+            // Load the Visualization API and the piechart package.
+            google.load('visualization', '1.0', {'packages': ['corechart']});
+
+            // Set a callback to run when the Google Visualization API is loaded.
+            google.setOnLoadCallback(drawChart);
+
+            // Callback that creates and populates a data table,
+            // instantiates the pie chart, passes in the data and
+            // draws it.
+            function drawChart() {
+
+                // Create the data table.
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Label');
+                data.addColumn('number', 'Value');
+                data.addRows([
+                    ['Old monthly payment', {{ calculation.current_loan_monthly_payment }}],
+                    ['New monthly payment', {{ calculation.monthly_payment }}]
+                ]);
+
+                // Set chart options
+                var options = {'title': 'Payment Comparison',
+                    'width': 400,
+                    'height': 300};
+
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.BarChart(document.getElementById('payment_comparison'));
+                chart.draw(data, options);
+            }
+        </script>
+
+        <script type="text/javascript">
+
+            // Load the Visualization API and the piechart package.
+            google.load('visualization', '1.0', {'packages': ['corechart']});
+
+            // Set a callback to run when the Google Visualization API is loaded.
+            google.setOnLoadCallback(drawChart);
+
+            // Callback that creates and populates a data table,
+            // instantiates the pie chart, passes in the data and
+            // draws it.
+            function drawChart() {
+
+                // Create the data table.
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Label');
+                data.addColumn('number', 'Value');
+                data.addRows([
+                    ['Estimated monthly savings', {{ calculation.estimated_monthly_savings }}],
+                    ['Estimated yearly savings', {{ calculation.estimated_yearly_savings }}]
+                ]);
+
+                // Set chart options
+                var options = {'title': 'Savings',
+                    'width': 400,
+                    'height': 300};
+
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.BarChart(document.getElementById('savings'));
+                chart.draw(data, options);
+            }
+        </script>
+    {% endif %}
+{% endblock extra_js %}
 {% block main %}
     <div class="row">
         <div class="col-md-4">
@@ -15,21 +119,42 @@
             <form action="" method="post">{% csrf_token %}
                 {% for field in form.visible_fields %}
                     <p>{{ field.errors }} {{ field.label_tag }} {{ field }}</p>
-                {%  endfor %}
+                {% endfor %}
                 <input type="submit" value="Submit"/>
-                <input type="hidden" name="loan_company_id" value="{{ loan_company.id }}" />
+                <input type="hidden" name="loan_company_id" value="{{ loan_company.id }}"/>
             </form>
         </div>
-    <div class="col-md-4">
-        <p>rate: {{ calculation.rate }}</p>
-        <p>maximum_term: {{ calculation.maximum_term }}</p>
-        <p>current_loan_estimated_remaining_term: {{ calculation.current_loan_estimated_remaining_term }}</p>
-        <p>monthly_payment: {{ calculation.monthly_payment }}</p>
-        <p>estimated_monthly_savings: {{ calculation.estimated_monthly_savings }}</p>
-        <p>estimated_yearly_savings: {{ calculation.estimated_yearly_savings }}</p>
-        <p>current_loan_remaining_interest: {{ calculation.current_loan_remaining_interest }}</p>
-        <p>loan_interest: {{ calculation.loan_interest }}</p>
-        <p>interest_savings: {{ calculation.interest_savings }}</p>
+        <div class="col-md-4">
+            <p>rate: {{ calculation.rate }}</p>
+
+            <p>maximum_term: {{ calculation.maximum_term }}</p>
+
+            <p>current_loan_estimated_remaining_term: {{ calculation.current_loan_estimated_remaining_term }}</p>
+
+            <p>monthly_payment: {{ calculation.monthly_payment }}</p>
+
+            <p>estimated_monthly_savings: {{ calculation.estimated_monthly_savings }}</p>
+
+            <p>estimated_yearly_savings: {{ calculation.estimated_yearly_savings }}</p>
+
+            <p>current_loan_remaining_interest: {{ calculation.current_loan_remaining_interest }}</p>
+
+            <p>loan_interest: {{ calculation.loan_interest }}</p>
+
+            <p>interest_savings: {{ calculation.interest_savings }}</p>
+        </div>
     </div>
+    <div class="row">
+        <div class="col_md_6">
+            <div id="interest_comparison"></div>
+        </div>
+        <div class="col_md_6">
+            <div id="payment_comparison"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col_md_6">
+            <div id="savings"></div>
+        </div>
     </div>
 {% endblock main %}
