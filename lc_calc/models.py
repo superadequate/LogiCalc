@@ -117,7 +117,7 @@ class LoanCalculation(TimeStamped):
     current_loan_rate = models.FloatField(null=True, blank=True)
     current_loan_estimated_remaining_term = models.IntegerField(null=True, blank=True)  # calculated in save
     estimated_credit_score = models.IntegerField(default=850, blank=True)
-    estimated_collateral_value = CurrencyField(null=True, blank=True)  # default set in save
+    estimated_collateral_value = CurrencyField(default=1000.00, null=True, blank=True)  # default set in save
     estimated_monthly_income = CurrencyField(null=True, blank=True,
                                              default=settings.DEFAULT_MONTHLY_INCOME)
     estimated_monthly_expenses = CurrencyField(null=True, blank=True,
@@ -125,7 +125,7 @@ class LoanCalculation(TimeStamped):
     estimated_year_of_collateral = models.IntegerField(null=True, blank=True,
                                                        default=lambda: datetime.datetime.now().year)
     loan_amount = CurrencyField()
-    monthly_term = models.IntegerField()
+    monthly_term = models.IntegerField(default=60)
     maximum_term = models.IntegerField()
     rate = models.FloatField()  # calculated in save
     monthly_payment = CurrencyField()  # calculated in save
@@ -167,11 +167,11 @@ class LoanCalculation(TimeStamped):
             return self.current_loan_remaining_interest - self.loan_interest
 
     def save(self, *args, **kwargs):
-        if self.estimated_collateral_value is None:
-            self.estimated_collateral_value = self.loan_amount * Decimal(settings.LOAN_AMOUNT_TO_COLLATERAL_VALUE)
         self.calculate_current_loan_estimated_remaining_term()
         self.calculate_rate()
         self.calculate_maximum_term()
+        if self.maximum_term < self.monthly_term:
+            self.monthly_term = self.maximum_term
         self.calculate_monthly_payment()
         super().save(*args, **kwargs)
 
