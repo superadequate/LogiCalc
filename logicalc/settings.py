@@ -6,17 +6,6 @@ import os
 _dirs = os.path.abspath(__file__).split('/')
 PROJECT_PATH = '/'.join(_dirs[0:-1])
 
-
-def get_env_var(vname):
-    """
-    Return value of named environment variable. Raises ImproperlyConfigured.
-    """
-    from django.core.exceptions import ImproperlyConfigured
-    try:
-        return os.environ[vname]
-    except KeyError:
-        raise ImproperlyConfigured("Set the {0} environment variable".format(vname))
-
 ######################
 # MEZZANINE SETTINGS #
 ######################
