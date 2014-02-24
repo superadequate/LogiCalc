@@ -15,6 +15,7 @@ They entered or accepted the default following loan information into the loan ca
     current_loan_rate: {{ msg.loan_calculation.current_loan_rate }}
     estimated_credit_score: {{ msg.loan_calculation.estimated_credit_score }}
     estimated_collateral_value: {{ msg.loan_calculation.estimated_collateral_value }}
+    estimated_monthly_income: {{ msg.loan_calculation.estimated_monthly_income }}
     estimated_monthly_expenses: {{ msg.loan_calculation.estimated_monthly_expenses }}
     estimated_year_of_collateral: {{ msg.loan_calculation.estimated_year_of_collateral }}
 
@@ -22,6 +23,7 @@ The following information was calculated for them on the loan calculation sheet:
     current_loan_estimated_remaining_term: {{ msg.loan_calculation.current_loan_estimated_remaining_term }}
     maximum_term: {{ msg.loan_calculation.maximum_term }}
     rate: {{ msg.loan_calculation.rate }}
+    loan_amount: {{ msg.loan_calculation.loan_amount }}
     monthly_payment: {{ msg.loan_calculation.monthly_payment }}
     interest_savings: {{ msg.loan_calculation.interest_savings }}
 
