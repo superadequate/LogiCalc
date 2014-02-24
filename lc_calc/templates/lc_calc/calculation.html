@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "lc_calc/base_loan_company.html" %}
 {% load mezzanine_tags %}
 {% block extra_js %}
     {% if calculation.interest_savings %}
@@ -106,14 +106,7 @@
     {% endif %}
 {% endblock extra_js %}
 {% block main %}
-    <div class="row">
-        <div class="col-md-4">
-            <img width="90%" src="{{ loan_company.logo.url }}"/>
-        </div>
-        <div class="col-md-8">
-            {{ loan_company.content|richtext_filters|safe }}
-        </div>
-    </div>
+    {{ block.super }}
     <div class="row">
         <div class="col-md-8">
             <form action="" method="post">{% csrf_token %}

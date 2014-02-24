@@ -1,3 +1,4 @@
+from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.shortcuts import get_object_or_404, redirect
 
@@ -6,7 +7,9 @@ from lc_calc.forms import LoanCalculationForm
 
 
 class LoanCompanyMixin(object):
-
+    """
+    Provides view with calculation and template with loan_company and calculation (if present)
+    """
     def get_loan_company(self):
         # Add the loan company
         return get_object_or_404(
@@ -18,13 +21,12 @@ class LoanCompanyMixin(object):
 
         # Add the loan company
         context['loan_company'] = self.get_loan_company()
+
+        calculation = self.get_calculation()
+        if calculation is not None:
+            context['calculation'] = calculation
+
         return context
-
-
-class CalculationView(LoanCompanyMixin, FormView):
-    template_name = "ls_calc/calculation.html"
-    form_class = LoanCalculationForm
-    model = LoanCalculation
 
     def get_calculation(self):
         """
@@ -40,6 +42,19 @@ class CalculationView(LoanCompanyMixin, FormView):
                 self.calculation = LoanCalculation.objects.get(id=calculation_id)
             return self.calculation
 
+    def put_calculation(self, calculation):
+        """
+        Record calculation in the session and on self
+        """
+        self.request.session['calculation_id'] = calculation.id
+        self.request.session.set_expiry(3600)  # remember it for an hour
+
+
+class CalculationView(LoanCompanyMixin, FormView):
+    template_name = "lc_calc/calculation.html"
+    form_class = LoanCalculationForm
+    model = LoanCalculation
+
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         calculation = self.get_calculation()
@@ -49,14 +64,10 @@ class CalculationView(LoanCompanyMixin, FormView):
 
     def form_valid(self, form):
         form.save()
-        self.request.session['calculation_id'] = form.instance.id
-        self.request.session.set_expiry(3600)
-        return redirect("calculation_view", **self.kwargs)
+        self.put_calculation(form.instance)
+        return redirect("calculation", **self.kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        calculation = self.get_calculation()
-        if calculation is not None:
-            context['calculation'] = calculation
-        return context
 
+class ContactView(LoanCompanyMixin, TemplateView):
+    template_name = "lc_calc/contact.html"
+    pass
