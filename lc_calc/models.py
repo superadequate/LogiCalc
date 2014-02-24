@@ -3,8 +3,9 @@ import datetime
 
 from django.conf import settings
 from django.db import models
+from django.db.models import Max
+
 from mezzanine.core.models import Slugged, RichText, TimeStamped
-from mezzanine.utils.urls import slugify
 
 from lc_calc.utils.excel_functions import nper, pmt
 from lc_calc.utils.email import send_email
@@ -191,10 +192,9 @@ class LoanCalculation(TimeStamped):
     def calculate_rate(self):
         rate = 0.0
         credit_score = self.estimated_credit_score
-        for value_type in LoanAdditionValueType.objects.all():
-            if value_type.sum_in_rate_calculation:
-                value_index = self.get_value_index(value_type)
-                rate += self.get_addition(value_type, credit_score, value_index)
+        for value_type in LoanAdditionValueType.objects.filter(sum_in_rate_calculation=True):
+            value_index = self.get_value_index(value_type)
+            rate += self.get_addition(value_type, credit_score, value_index)
         self.rate = rate
 
     def calculate_maximum_term(self):
@@ -216,16 +216,27 @@ class LoanCalculation(TimeStamped):
         return self.estimated_year_of_collateral
 
     def get_addition(self, value_type, credit_score, value_index):
+
+        # Ensure that the upper bound of the indices is in range
+        indices = {'credit_score': credit_score,
+                   'value_index': value_index}
+        for fname in indices:
+            info = LoanAddition.objects.filter(loan_company=self.loan_company,
+                                               loan_type=self.loan_type,
+                                               value_type=value_type).aggregate(Max(fname))
+            max_value = info['{}__max'.format(fname)]
+            if indices[fname] > max_value:
+                indices[fname] = max_value
+
         loan_additions = LoanAddition.objects.filter(
             loan_company=self.loan_company,
             loan_type=self.loan_type,
             value_type=value_type,
-            credit_score__gte=credit_score,
-            value_index__gte=value_index)
-        if len(loan_additions):
-            return loan_additions[0].value
-        else:
-            return 0.0
+            credit_score__gte=indices['credit_score'],
+            value_index__gte=indices['value_index'])
+
+        # As we've adjusted the bounds, we should always get at least one result unless the table is missing
+        return loan_additions[0].value
 
     def calculate_monthly_payment(self):
         self.monthly_payment = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
@@ -239,7 +250,7 @@ class LoanCompanyMessage(TimeStamped):
     loan_company = models.ForeignKey(LoanCompany, editable=False)
     loan_calculation = models.ForeignKey(LoanCalculation, null=True, editable=False)
     sender = models.EmailField(verbose_name="Your email address")
-    message = models.TextField(max_length=1024, null=True)
+    message = models.TextField(max_length=1024, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         is_new = self.pk is None

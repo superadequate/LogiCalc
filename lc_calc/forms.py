@@ -1,10 +1,11 @@
 from decimal import Decimal
 
 from django import forms
+from django.forms.util import ErrorList
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from lc_calc.models import LoanCalculation, LoanCompany
+from lc_calc.models import LoanCalculation, LoanCompany, LoanType
 
 
 class PercentInput(forms.TextInput):
@@ -51,6 +52,19 @@ class LoanCalculationForm(forms.ModelForm):
                   'estimated_year_of_collateral',
                   'loan_amount',
                   'monthly_term']
+
+    def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=ErrorList,
+                 label_suffix=None, empty_permitted=False, instance=None, loan_company=None):
+        if loan_company is None:
+            raise Exception('No loan company supplied to calculation form')
+        result = super().__init__(
+            data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance)
+        self.fields['loan_type'].widget.choices = self.get_loan_type_choices(loan_company)
+        return result
+
+    @staticmethod
+    def get_loan_type_choices(loan_company):
+        return [(lt.id, lt.name) for lt in LoanType.objects.filter(loanaddition__loan_company=loan_company).distinct()]
 
     def clean(self):
         """

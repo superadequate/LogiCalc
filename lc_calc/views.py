@@ -58,6 +58,11 @@ class CalculationView(LoanCompanyMixin, FormView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
+
+        # Add in the loan company so we can determine the available loan types
+        kwargs['loan_company'] = self.get_loan_company()
+
+        # Add in the calculation if it already exists
         calculation = self.get_calculation()
         if calculation is not None:
             kwargs['instance'] = calculation
