@@ -9,8 +9,29 @@ from lc_calc.models import (LoanType,
                             LoanCompanyMessage)
 
 admin.site.register(LoanType)
-admin.site.register(LoanCalculation)
-admin.site.register(LoanCompanyMessage)
+
+
+class LoanCompanyMessageAdmin(admin.ModelAdmin):
+    list_display = ['id', 'created', 'loan_company', 'sender', 'loan_calculation']
+    list_filter = ['created', 'loan_company']
+    search_fields = ['sender']
+
+    def has_add_permission(self, request):
+        return False
+
+admin.site.register(LoanCompanyMessage, LoanCompanyMessageAdmin)
+
+
+class LoanCalculationAdmin(admin.ModelAdmin):
+    list_display = ['id', 'created', 'loan_company', 'loan_type', 'loan_amount', 'monthly_term', 'rate', 'monthly_payment']
+    list_filter = ['created', 'loan_company', 'loan_type', 'loan_amount']
+    search_fields = ['loan_company', 'loan_type']
+
+    def has_add_permission(self, request):
+        return False
+
+
+admin.site.register(LoanCalculation, LoanCalculationAdmin)
 
 
 class LoanAdditionValueTypeAdmin(admin.ModelAdmin):

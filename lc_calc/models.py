@@ -132,6 +132,10 @@ class LoanCalculation(TimeStamped):
     rate = models.FloatField()  # calculated in save
     monthly_payment = CurrencyField()  # calculated in save
 
+    def __str__(self):
+        return "<{}: ${} / {}m>".format(self.id, self.loan_amount, self.monthly_term)
+
+
     @property
     def estimated_monthly_savings(self):
         if self.current_loan_monthly_payment:
