@@ -1,0 +1,30 @@
+{{ msg.sender }} has requested that you contact them regarding a loan.
+
+{% if msg.message %}
+They entered the following message:
+{{ msg.message }}
+{% endif %}
+
+{%  if msg.calculation %}
+{{ msg.sender }} would like a loan of ${{ msg.calculation.loan_amount }} over {{ msg.monthly_term }} months.
+
+They entered or accepted the default following loan information into the loan calculation sheet:
+    loan_type: {{ msg.calculation.loan_type }}
+    current_loan_balance: {{ msg.calculation.current_loan_balance }}
+    current_loan_monthly_payment: {{ msg.calculation.current_loan_monthly_payment }}
+    current_loan_rate: {{ msg.calculation.current_loan_rate }}
+    estimated_credit_score: {{ msg.calculation.estimated_credit_score }}
+    estimated_collateral_value: {{ msg.calculation.estimated_collateral_value }}
+    estimated_monthly_expenses: {{ msg.calculation.estimated_monthly_expenses }}
+    estimated_year_of_collateral: {{ msg.calculation.estimated_year_of_collateral }}
+
+The following information was calculated for them on the loan calculation sheet:
+    current_loan_estimated_remaining_term: {{ msg.calculation.current_loan_estimated_remaining_term }}
+    maximum_term: {{ msg.calculation.maximum_term }}
+    rate: {{ msg.calculation.rate }}
+    monthly_payment: {{ msg.calculation.monthly_payment }}
+    interest_savings: {{ msg.calculation.interest_savings }}
+
+{% else %}
+They did not enter any loan information into the loan calculation sheet.
+{% endif %}

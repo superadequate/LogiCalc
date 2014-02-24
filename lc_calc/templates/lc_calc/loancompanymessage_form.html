@@ -1,0 +1,18 @@
+{% extends "lc_calc/base_loan_company.html" %}
+{% load mezzanine_tags %}
+{% block main %}
+    {{ block.super }}
+    {% if calculation %}
+        <p>Your loan details for the loan of ${{ calculation.loan_amount }} will be attached automatically so you do not
+            need to repeat them in the message</p>
+    {% else %}
+        <p>As you have not completed a loan calculation, be sure to include all the relevant details in your message
+            below</p>
+    {% endif %}
+    <div class="row">
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Send"/>
+        </form>
+    </div>
+{% endblock main %}

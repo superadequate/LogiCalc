@@ -135,6 +135,7 @@
             <p>loan_interest: {{ calculation.loan_interest }}</p>
 
             <p>interest_savings: {{ calculation.interest_savings }}</p>
+            <a href="{% url "loan_company_message" loan_company.slug %}" class="btn btn-success"><span class="glyphicon-white glyphicon-envelope"></span> Contact {{ loan_company.title }}</a>
         </div>
     </div>
     <div class="row">

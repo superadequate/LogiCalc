@@ -7,6 +7,7 @@ from mezzanine.core.models import Slugged, RichText, TimeStamped
 from mezzanine.utils.urls import slugify
 
 from lc_calc.utils.excel_functions import nper, pmt
+from lc_calc.utils.email import send_email
 
 
 class CurrencyField(models.DecimalField):
@@ -53,6 +54,7 @@ class LoanCompany(Slugged, RichText):
     """
     logo = models.ImageField(upload_to='loan_company_logos', null=True, blank=True,
                              help_text='The logo image for the company (need to set a size - keep it small)')
+    email = models.EmailField(help_text='This email will be used for reporting and communication so it is essential.')
 
     class Meta:
         ordering = ['title']
@@ -223,4 +225,30 @@ class LoanCalculation(TimeStamped):
 
     def calculate_monthly_payment(self):
         self.monthly_payment = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
+
+
+class LoanCompanyMessage(TimeStamped):
+    """
+    Loan contact email created when user submits filled in contact request.
+    Email is sent when this is created.
+    """
+    loan_company = models.ForeignKey(LoanCompany, editable=False)
+    loan_calculation = models.ForeignKey(LoanCalculation, null=True, editable=False)
+    sender = models.EmailField(verbose_name="Your email address")
+    message = models.TextField(max_length=1024, null=True)
+
+    def save(self, *args, **kwargs):
+        is_new = self.pk is None
+        result = super().save(*args, **kwargs)
+        if is_new:
+            # Send the message
+            subject = 'Information request from logicalc'
+            to = [self.loan_company.email]
+            context = {'loan_company': self.loan_company,
+                       'msg': self}
+            send_email(subject, to, 'lc_calc/email/company_message.html', context)
+        return result
+
+
+
 

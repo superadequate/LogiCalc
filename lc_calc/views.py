@@ -1,8 +1,9 @@
-from django.views.generic import TemplateView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, CreateView
 from django.shortcuts import get_object_or_404, redirect
+from django.core.urlresolvers import reverse
+from django.contrib import messages
 
-from lc_calc.models import LoanCompany, LoanCalculation
+import lc_calc.models as lcmodels
 from lc_calc.forms import LoanCalculationForm
 
 
@@ -13,7 +14,7 @@ class LoanCompanyMixin(object):
     def get_loan_company(self):
         # Add the loan company
         return get_object_or_404(
-            LoanCompany,
+            lcmodels.LoanCompany,
             slug=self.kwargs['loan_company_slug'])
 
     def get_context_data(self, **kwargs):
@@ -39,7 +40,7 @@ class LoanCompanyMixin(object):
             if calculation_id is None:
                 self.calculation = None
             else:
-                self.calculation = LoanCalculation.objects.get(id=calculation_id)
+                self.calculation = lcmodels.LoanCalculation.objects.get(id=calculation_id)
             return self.calculation
 
     def put_calculation(self, calculation):
@@ -53,7 +54,7 @@ class LoanCompanyMixin(object):
 class CalculationView(LoanCompanyMixin, FormView):
     template_name = "lc_calc/calculation.html"
     form_class = LoanCalculationForm
-    model = LoanCalculation
+    model = lcmodels.LoanCalculation
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -68,6 +69,18 @@ class CalculationView(LoanCompanyMixin, FormView):
         return redirect("calculation", **self.kwargs)
 
 
-class ContactView(LoanCompanyMixin, TemplateView):
-    template_name = "lc_calc/contact.html"
-    pass
+class LoanCompanyMessageView(LoanCompanyMixin, CreateView):
+    model = lcmodels.LoanCompanyMessage
+
+    def form_valid(self, form):
+        """
+        Specialisation to record the loan_company and calculation if available.
+        """
+        self.success_url = reverse('calculation', kwargs={'loan_company_slug': self.kwargs['loan_company_slug']})
+        messages.success(self.request, 'Your message has been sent.')
+        lcm = form.instance
+        lcm.loan_company = self.get_loan_company()
+        calculation = self.get_calculation()
+        if calculation:
+            lcm.loan_calculation = calculation
+        return super().form_valid(form)

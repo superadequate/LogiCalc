@@ -4,9 +4,13 @@ from lc_calc.utils.related_field_admin import RelatedFieldAdmin
 from lc_calc.models import (LoanType,
                             LoanCompany,
                             LoanAdditionValueType,
-                            LoanAddition)
+                            LoanAddition,
+                            LoanCalculation,
+                            LoanCompanyMessage)
 
 admin.site.register(LoanType)
+admin.site.register(LoanCalculation)
+admin.site.register(LoanCompanyMessage)
 
 
 class LoanAdditionValueTypeAdmin(admin.ModelAdmin):
@@ -17,8 +21,8 @@ admin.site.register(LoanAdditionValueType, LoanAdditionValueTypeAdmin)
 
 
 class LoanCompanyAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug']
-    fields = ['title', 'slug', 'content', 'logo']
+    list_display = ['title', 'slug', 'email']
+    fields = ['title', 'slug', 'email', 'content', 'logo']
     readonly_fields = ['slug']
 
 admin.site.register(LoanCompany, LoanCompanyAdmin)
