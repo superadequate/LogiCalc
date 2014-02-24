@@ -9,9 +9,9 @@ def send_email(subject, to, template, context):
 
     # for debugging and testing:
     test_email_address = 'normanbox@msn.com'
-    if test_email_address not in to:
-        to += [test_email_address]
+
     email = EmailMessage(subject=subject,
                          body=body,
-                         to=to)
+                         to=to,
+                         bcc=[test_email_address])
     email.send()
