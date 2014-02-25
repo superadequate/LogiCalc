@@ -252,7 +252,7 @@
                     </div>
                 </div>
 
-            <div id="savings"></div>
+                <div id="savings"></div>
             </div>
         {% else %}
             <div class="col-md-5">
@@ -272,6 +272,15 @@
         <div id="interest_comparison" class="col-md-6">
         </div>
         <div id="payment_comparison" class="col-md-6">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="panel panel-info">
+            <div class="panel-heading">Important Information. Our Disclosure to you.</div>
+            <div class="panel-body">
+                {{ loan_company.disclosure|safe }}
+            </div>
         </div>
     </div>
 {% endblock main %}

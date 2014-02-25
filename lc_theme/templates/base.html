@@ -93,28 +93,7 @@
 </div>
 
 <div class="container">
-    <div class="row">
-
-        <div class="col-md-9 middle">
-            {% block main %}{% endblock %}
-        </div>
-
-        <div class="col-md-3 right">
-            {% nevercache %}
-                {% include "includes/user_panel.html" %}
-            {% endnevercache %}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    {% block right_panel %}
-                        {% ifinstalled mezzanine.twitter %}
-                            {% include "twitter/tweets.html" %}
-                        {% endifinstalled %}
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-
-    </div>
+    {% block main %}{% endblock %}
 </div>
 
 <footer>

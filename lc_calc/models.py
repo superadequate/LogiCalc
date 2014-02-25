@@ -6,6 +6,7 @@ from django.db import models
 from django.db.models import Max
 
 from mezzanine.core.models import Slugged, RichText, TimeStamped
+from mezzanine.core.fields import RichTextField
 
 from lc_calc.utils.excel_functions import nper, pmt
 from lc_calc.utils.email import send_email
@@ -48,6 +49,16 @@ class Named(models.Model):
 class LoanType(Named):
     pass
 
+DISCLOSURE_DEFAULT = """
+<p>Our financial calculator tool will help you analyze your financial needs.
+The results are based on our quantitative underwriting criteria and accuracy of the inputted data.
+Though we strive to provide you with the most accurate results possible, actual results will be
+dependent upon our full underwriting requirements by a qualified loan officer.
+The calculations on this page do not assume that the company accepts any fiduciary duties.
+The calculations provided should not be taken as financial, legal or tax advice.
+Our underwriting criteria is subject to change without notice.</p>
+"""
+
 
 class LoanCompany(Slugged, RichText):
     """
@@ -56,6 +67,7 @@ class LoanCompany(Slugged, RichText):
     logo = models.ImageField(upload_to='loan_company_logos', null=True, blank=True,
                              help_text='The logo image for the company (need to set a size - keep it small)')
     email = models.EmailField(help_text='This email will be used for reporting and communication so it is essential.')
+    disclosure = RichTextField("Disclosure", default=DISCLOSURE_DEFAULT)
 
     class Meta:
         ordering = ['title']

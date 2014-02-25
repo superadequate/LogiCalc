@@ -43,7 +43,7 @@ admin.site.register(LoanAdditionValueType, LoanAdditionValueTypeAdmin)
 
 class LoanCompanyAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'email']
-    fields = ['title', 'slug', 'email', 'content', 'logo']
+    fields = ['title', 'slug', 'email', 'content', 'logo', 'disclosure']
     readonly_fields = ['slug']
 
 admin.site.register(LoanCompany, LoanCompanyAdmin)

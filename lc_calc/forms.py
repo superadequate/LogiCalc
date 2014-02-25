@@ -38,6 +38,18 @@ class PercentageField(forms.DecimalField):
 class LoanCalculationForm(forms.ModelForm):
     loan_company_id = forms.IntegerField(widget=forms.HiddenInput)
     # current_loan_rate = PercentageField(widget=PercentInput(attrs={'size': 4}))
+    fieldset_info = {
+        'required_fields': ['loan_type',
+                            'loan_amount',
+                            'monthly_term'],
+        'current_loan_fields': ['current_loan_balance',
+                                'current_loan_monthly_payment',
+                                'current_loan_rate'],
+        'credit_information_fields': ['estimated_credit_score',
+                                      'estimated_collateral_value',
+                                      'estimated_monthly_income',
+                                      'estimated_monthly_expenses',
+                                      'estimated_year_of_collateral']}
 
     class Meta:
         model = LoanCalculation
@@ -57,10 +69,25 @@ class LoanCalculationForm(forms.ModelForm):
                  label_suffix=None, empty_permitted=False, instance=None, loan_company=None):
         if loan_company is None:
             raise Exception('No loan company supplied to calculation form')
+
         result = super().__init__(
             data, files, auto_id, prefix, initial, error_class, label_suffix, empty_permitted, instance)
+
+        # Set the loan_type choices based on the company
         self.fields['loan_type'].widget.choices = self.get_loan_type_choices(loan_company)
         return result
+
+    @property
+    def required_fields(self):
+        return (f for f in self.visible_fields() if f.name in self.fieldset_info['required_fields'])
+
+    @property
+    def current_loan_fields(self):
+        return (f for f in self.visible_fields() if f.name in self.fieldset_info['current_loan_fields'])
+
+    @property
+    def credit_information_fields(self):
+        return (f for f in self.visible_fields() if f.name in self.fieldset_info['credit_information_fields'])
 
     @staticmethod
     def get_loan_type_choices(loan_company):
