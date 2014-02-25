@@ -1,5 +1,5 @@
 {% extends "lc_calc/base_loan_company.html" %}
-{% load mezzanine_tags %}
+{% load mezzanine_tags staticfiles %}
 {% block extra_js %}
     {% if calculation.interest_savings %}
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -10,32 +10,27 @@
             google.load('visualization', '1.0', {'packages': ['corechart']});
 
             // Set a callback to run when the Google Visualization API is loaded.
-            google.setOnLoadCallback(drawChart);
+            google.setOnLoadCallback(drawInterestSavingChart);
 
             // Callback that creates and populates a data table,
             // instantiates the pie chart, passes in the data and
             // draws it.
-            function drawChart() {
+            function drawInterestSavingChart() {
 
                 // Create the data table.
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Label');
-                data.addColumn('number', 'Value');
-                data.addRows([
-                    ['Remaining loan interest', {{ calculation.current_loan_remaining_interest }}],
-                    ['New loan interest', {{ calculation.loan_interest }}],
-                    ['Interest savings', {{ calculation.interest_savings }}]
-                ]);
+                var data = new google.visualization.arrayToDataTable([
+                      ['Label', 'Value', {role: 'style'}],
+                      ['Savings', {{ calculation.interest_savings }}, 'green'],
+                      ['New interest', {{ calculation.loan_interest }}, 'blue'],
+                      ['Old interest', {{ calculation.current_loan_remaining_interest }}, 'red']]);
 
-                // Set chart options
-                var options = {'title': 'Interest Comparison',
-                    'width': 400,
-                    'height': 300};
-
-                // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.BarChart(document.getElementById('interest_comparison'));
-                chart.draw(data, options);
-            }
+                new google.visualization.BarChart(document.getElementById('interest_comparison')).
+                        draw(data,
+                        {title:"Interest Comparison",
+                            width:400,
+                            height:200,
+                            legend: {position: "none"},
+                            vAxis: {textPosition: "out"}})}
         </script>
 
         <script type="text/javascript">
@@ -44,31 +39,26 @@
             google.load('visualization', '1.0', {'packages': ['corechart']});
 
             // Set a callback to run when the Google Visualization API is loaded.
-            google.setOnLoadCallback(drawChart);
+            google.setOnLoadCallback(drawPaymentComparisonChart);
 
             // Callback that creates and populates a data table,
             // instantiates the pie chart, passes in the data and
             // draws it.
-            function drawChart() {
+            function drawPaymentComparisonChart() {
 
                 // Create the data table.
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Label');
-                data.addColumn('number', 'Value');
-                data.addRows([
-                    ['Old monthly payment', {{ calculation.current_loan_monthly_payment }}],
-                    ['New monthly payment', {{ calculation.monthly_payment }}]
-                ]);
+                var data = new google.visualization.arrayToDataTable([
+                      ['Label', 'Value', {role: 'style'}],
+                      ['New', {{ calculation.monthly_payment }}, 'green'],
+                      ['Old', {{ calculation.current_loan_monthly_payment }}, 'red']]);
 
-                // Set chart options
-                var options = {'title': 'Payment Comparison',
-                    'width': 400,
-                    'height': 300};
-
-                // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.BarChart(document.getElementById('payment_comparison'));
-                chart.draw(data, options);
-            }
+                new google.visualization.BarChart(document.getElementById('payment_comparison')).
+                        draw(data,
+                        {title:"Payment Comparison",
+                            width:400,
+                            height:200,
+                            legend: {position: "none"},
+                            vAxis: {textPosition: "out"}})}
         </script>
 
         <script type="text/javascript">
@@ -77,31 +67,26 @@
             google.load('visualization', '1.0', {'packages': ['corechart']});
 
             // Set a callback to run when the Google Visualization API is loaded.
-            google.setOnLoadCallback(drawChart);
+            google.setOnLoadCallback(drawSavingsChart);
 
             // Callback that creates and populates a data table,
             // instantiates the pie chart, passes in the data and
             // draws it.
-            function drawChart() {
+            function drawSavingsChart() {
 
                 // Create the data table.
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Label');
-                data.addColumn('number', 'Value');
-                data.addRows([
-                    ['Estimated monthly savings', {{ calculation.estimated_monthly_savings }}],
-                    ['Estimated yearly savings', {{ calculation.estimated_yearly_savings }}]
-                ]);
+                var data = new google.visualization.arrayToDataTable([
+                      ['Label', 'Value', {role: 'style'}],
+                      ['Annual', {{ calculation.estimated_yearly_savings }}, 'green'],
+                      ['Monthly', {{ calculation.estimated_monthly_savings }}, 'blue']]);
 
-                // Set chart options
-                var options = {'title': 'Savings',
-                    'width': 400,
-                    'height': 300};
-
-                // Instantiate and draw our chart, passing in some options.
-                var chart = new google.visualization.BarChart(document.getElementById('savings'));
-                chart.draw(data, options);
-            }
+                new google.visualization.BarChart(document.getElementById('savings')).
+                        draw(data,
+                        {title:"Savings",
+                            width:400,
+                            height:200,
+                            legend: {position: "none"},
+                            vAxis: {textPosition: "out"}})}
         </script>
     {% endif %}
 {% endblock extra_js %}
@@ -139,11 +124,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col_md_6">
-            <div id="interest_comparison"></div>
+        <div id="interest_comparison" class="col-md-6">
         </div>
-        <div class="col_md_6">
-            <div id="payment_comparison"></div>
+        <div id="payment_comparison" class="col-md-6">
         </div>
     </div>
     <div class="row">
