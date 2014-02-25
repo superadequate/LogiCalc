@@ -24,13 +24,15 @@ class LoanDataImporter(object):
                 # Set the reference data and current indices
                 self.loan_company = self.get_or_create(LoanCompany, title=row['LoanCompany_title'])
                 self.loan_type = self.get_or_create(LoanType, name=row['LoanType_name'])
-                self.value_type = self.get_or_create(LoanAdditionValueType, name=row['LoanAdditionLookupValueType'])
+                self.value_type = self.get_or_create(LoanAdditionValueType,
+                                                     name=row['LoanAdditionLookupValueType'],
+                                                     loan_company=self.loan_company)
                 self.value_indices = [(k, int(row[k])) for k in self.value_keys]
 
                 # Delete old values
                 for vo in LoanAddition.objects.filter(loan_company=self.loan_company,
-                                                            loan_type=self.loan_type,
-                                                            value_type=self.value_type,):
+                                                      loan_type=self.loan_type,
+                                                      value_type=self.value_type,):
                     vo.delete()
             elif row['Type'] == 'values':
 

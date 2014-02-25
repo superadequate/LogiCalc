@@ -2,12 +2,13 @@
 {
     "model": "lc_calc.loancompany", 
     "fields": {
-        "title": "ACLE Loans", 
+        "logo": "loan_company_logos/paul_whipp_close_cartoon_bw_filter_40.jpg", 
+        "email": "", 
         "slug": "acle-loans", 
-        "email": "paul.whipp1@gmail.com", 
-        "site": 1, 
-        "content": "<p>A Company that Loans Everything</p>", 
-        "logo": "loan_company_logos/paul_whipp_close_cartoon_bw_filter_40.jpg"
+        "disclosure": "\n<p>Our financial calculator tool will help you analyze your financial needs.\nThe results are based on our quantitative underwriting criteria and accuracy of the inputted data.\nThough we strive to provide you with the most accurate results possible, actual results will be\ndependent upon our full underwriting requirements by a qualified loan officer.\nThe calculations on this page do not assume that the company accepts any fiduciary duties.\nThe calculations provided should not be taken as financial, legal or tax advice.\nOur underwriting criteria is subject to change without notice.</p>\n", 
+        "content": "", 
+        "title": "ACLE Loans", 
+        "site": 1
     }, 
     "pk": 1
 },

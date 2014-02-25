@@ -81,6 +81,7 @@ class LoanAdditionValueType(Named):
         ('_get_value_index_loan_to_value', 'Loan to value'),
         ('_get_value_index_debt_to_income', 'Debt to income'),
         ('_get_value_index_year_of_collateral', 'Year of collateral'))
+    loan_company = models.ForeignKey(LoanCompany)
     value_index_method_name = models.CharField(max_length=128,
                                                choices=VALUE_INDEX_METHOD_NAME_CHOICES,
                                                default='_get_value_index_loan_to_value',
@@ -204,7 +205,8 @@ class LoanCalculation(TimeStamped):
     def calculate_rate(self):
         rate = 0.0
         credit_score = self.estimated_credit_score
-        for value_type in LoanAdditionValueType.objects.filter(sum_in_rate_calculation=True):
+        for value_type in LoanAdditionValueType.objects.filter(sum_in_rate_calculation=True,
+                                                               loan_company=self.loan_company):
             value_index = self.get_value_index(value_type)
             rate += self.get_addition(value_type, credit_score, value_index)
         self.rate = rate

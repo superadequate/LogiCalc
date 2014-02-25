@@ -35,8 +35,10 @@ admin.site.register(LoanCalculation, LoanCalculationAdmin)
 
 
 class LoanAdditionValueTypeAdmin(admin.ModelAdmin):
-    list_display = ['name', 'value_index_method_name', 'sum_in_rate_calculation']
+    list_display = ['name', 'loan_company', 'value_index_method_name', 'sum_in_rate_calculation']
     list_editable = ['value_index_method_name', 'sum_in_rate_calculation']
+    list_filter = ['loan_company', 'value_index_method_name', 'sum_in_rate_calculation']
+    search_fields = ['name']
 
 admin.site.register(LoanAdditionValueType, LoanAdditionValueTypeAdmin)
 

@@ -135,7 +135,7 @@
                         </div>
                     </div>
                     <div class="panel panel-info">
-                        <div class="panel-heading">Existing Loan Information (optional)</div>
+                        <div class="panel-heading">Existing Loan Information (optional, for a convenient comparison)</div>
                         <div class="panel-body">
                             {% for field in form.current_loan_fields %}
                                 {% if field.errors %}
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="panel panel-info">
-                        <div class="panel-heading">Credit Information (optional)</div>
+                        <div class="panel-heading">Credit Information (optional, for a better estimate)</div>
                         <div class="panel-body">
                             {% for field in form.credit_information_fields %}
                                 {% if field.errors %}
@@ -260,7 +260,7 @@
                     <div class="panel-heading">Get your Loan Estimate</div>
                     <div class="panel-body">
                         <p>Enter your needs on the left and click on "Get Estimate" at the bottom of the page to get an
-                            instant estimate or click on the button below to contact us by email</p>
+                            instant estimate displayed here or click on the button below to contact us by email</p>
                         <a href="{% url "loan_company_message" loan_company.slug %}" class="btn btn-success"><span
                                 class="glyphicon-white glyphicon-envelope"></span> Contact {{ loan_company.title }}</a>
                     </div>
