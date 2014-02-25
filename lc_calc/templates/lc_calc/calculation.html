@@ -1,5 +1,5 @@
 {% extends "lc_calc/base_loan_company.html" %}
-{% load mezzanine_tags staticfiles %}
+{% load mezzanine_tags staticfiles  lc_calc_extras %}
 {% block extra_js %}
     {% if calculation.interest_savings %}
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -19,18 +19,20 @@
 
                 // Create the data table.
                 var data = new google.visualization.arrayToDataTable([
-                      ['Label', 'Value', {role: 'style'}],
-                      ['Savings', {{ calculation.interest_savings }}, 'green'],
-                      ['New interest', {{ calculation.loan_interest }}, 'blue'],
-                      ['Old interest', {{ calculation.current_loan_remaining_interest }}, 'red']]);
+                    ['Label', 'Value', {role: 'style'}],
+                    ['Savings', {{ calculation.interest_savings }}, 'green'],
+                    ['New interest', {{ calculation.loan_interest }}, 'blue'],
+                    ['Old interest', {{ calculation.current_loan_remaining_interest }}, 'red']
+                ]);
 
                 new google.visualization.BarChart(document.getElementById('interest_comparison')).
                         draw(data,
-                        {title:"Interest Comparison",
-                            width:400,
-                            height:200,
+                        {title: "Interest Comparison",
+                            width: 400,
+                            height: 200,
                             legend: {position: "none"},
-                            vAxis: {textPosition: "out"}})}
+                            vAxis: {textPosition: "out"}})
+            }
         </script>
 
         <script type="text/javascript">
@@ -48,17 +50,19 @@
 
                 // Create the data table.
                 var data = new google.visualization.arrayToDataTable([
-                      ['Label', 'Value', {role: 'style'}],
-                      ['New', {{ calculation.monthly_payment }}, 'green'],
-                      ['Old', {{ calculation.current_loan_monthly_payment }}, 'red']]);
+                    ['Label', 'Value', {role: 'style'}],
+                    ['New', {{ calculation.monthly_payment }}, 'green'],
+                    ['Old', {{ calculation.current_loan_monthly_payment }}, 'red']
+                ]);
 
                 new google.visualization.BarChart(document.getElementById('payment_comparison')).
                         draw(data,
-                        {title:"Payment Comparison",
-                            width:400,
-                            height:200,
+                        {title: "Payment Comparison",
+                            width: 400,
+                            height: 200,
                             legend: {position: "none"},
-                            vAxis: {textPosition: "out"}})}
+                            vAxis: {textPosition: "out"}})
+            }
         </script>
 
         <script type="text/javascript">
@@ -76,62 +80,198 @@
 
                 // Create the data table.
                 var data = new google.visualization.arrayToDataTable([
-                      ['Label', 'Value', {role: 'style'}],
-                      ['Annual', {{ calculation.estimated_yearly_savings }}, 'green'],
-                      ['Monthly', {{ calculation.estimated_monthly_savings }}, 'blue']]);
+                    ['Label', 'Value', {role: 'style'}],
+                    ['Annual', {{ calculation.estimated_yearly_savings }}, 'green'],
+                    ['Monthly', {{ calculation.estimated_monthly_savings }}, 'blue']
+                ]);
 
                 new google.visualization.BarChart(document.getElementById('savings')).
                         draw(data,
-                        {title:"Savings",
-                            width:400,
-                            height:200,
+                        {title: "Savings",
+                            width: 400,
+                            height: 200,
                             legend: {position: "none"},
-                            vAxis: {textPosition: "out"}})}
+                            vAxis: {textPosition: "out"}})
+            }
         </script>
     {% endif %}
 {% endblock extra_js %}
 {% block main %}
     {{ block.super }}
     <div class="row">
-        <div class="col-md-8">
-            <form action="" method="post">{% csrf_token %}
-                {% for field in form.visible_fields %}
-                    <p>{{ field.errors }} {{ field.label_tag }} {{ field }}</p>
-                {% endfor %}
-                <input type="submit" value="Submit"/>
+        <div class="col-md-7">
+            <form action="" method="post">
+                <fieldset>
+                    {% csrf_token %}
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Required Information</div>
+                        <div class="panel-body">
+                            {% for field in form.required_fields %}
+                                {% if field.errors %}
+                                    <div class="control-group error">
+                                        <label class="control-label">{{ field.label }}</label>
+
+                                        <div class="controls">{{ field }}
+                                            <span class="help-inline">
+                                                {% for error in  field.errors %}{{ error }}{% endfor %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="row control-group">
+                                        <div class="col-md-6">
+                                            <label class="control-label">{{ field.label }}</label>
+                                        </div>
+                                        <div class="col-md-6 controls">{{ field }}
+                                            {% if field.help_text %}
+                                                <p class="help-inline">
+                                                    <small>{{ field.help_text }}</small>
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Existing Loan Information (optional)</div>
+                        <div class="panel-body">
+                            {% for field in form.current_loan_fields %}
+                                {% if field.errors %}
+                                    <div class="control-group error">
+                                        <label class="control-label">{{ field.label }}</label>
+
+                                        <div class="controls">{{ field }}
+                                            <span class="help-inline">
+                                                {% for error in  field.errors %}{{ error }}{% endfor %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="row control-group">
+                                        <div class="col-md-6">
+                                            <label class="control-label">{{ field.label }}</label>
+                                        </div>
+                                        <div class="col-md-6 controls">{{ field }}
+                                            {% if field.help_text %}
+                                                <p class="help-inline">
+                                                    <small>{{ field.help_text }}</small>
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Credit Information (optional)</div>
+                        <div class="panel-body">
+                            {% for field in form.credit_information_fields %}
+                                {% if field.errors %}
+                                    <div class="control-group error">
+                                        <label class="control-label">{{ field.label }}</label>
+
+                                        <div class="controls">{{ field }}
+                                            <span class="help-inline">
+                                                {% for error in  field.errors %}{{ error }}{% endfor %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="row control-group">
+                                        <div class="col-md-6">
+                                            <label class="control-label">{{ field.label }}</label>
+                                        </div>
+                                        <div class="col-md-6 controls">{{ field }}
+                                            {% if field.help_text %}
+                                                <p class="help-inline">
+                                                    <small>{{ field.help_text }}</small>
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </fieldset>
+                <input class="btn btn-success" type="submit" value="Get Estimate"/>
                 <input type="hidden" name="loan_company_id" value="{{ loan_company.id }}"/>
             </form>
         </div>
-        <div class="col-md-4">
-            <p>rate: {{ calculation.rate }}</p>
+        {% if calculation.rate %}
+            <div class="col-md-5">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Your Loan Estimate</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">Rate</div>
+                            <div class="col-md-6"><strong>{{ calculation.rate|percentage }}</strong></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Maximum Term</div>
+                            <div class="col-md-6"><strong>{{ calculation.maximum_term }}</strong></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Monthly Payment</div>
+                            <div class="col-md-6"><strong>${{ calculation.monthly_payment }}</strong></div>
+                        </div>
+                        {% if calculation.interest_savings %}
+                            <div class="row">
+                                <div class="col-md-6">Remaining Term (est)</div>
+                                <div class="col-md-6">
+                                    <strong>{{ calculation.current_loan_estimated_remaining_term }}</strong></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">Monthly Savings (est)</div>
+                                <div class="col-md-6"><strong>${{ calculation.estimated_monthly_savings }}</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">Yearly Savings (est)</div>
+                                <div class="col-md-6"><strong>${{ calculation.estimated_yearly_savings }}</strong></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">Remaining Interest (est)</div>
+                                <div class="col-md-6"><strong>{{ calculation.current_loan_remaining_interest }}</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">New Interest</div>
+                                <div class="col-md-6"><strong>{{ calculation.loan_interest }}</strong></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">Cash Saving</div>
+                                <div class="col-md-6"><strong>{{ calculation.interest_savings }}</strong></div>
+                            </div>
+                        {% endif %}
+                        <a href="{% url "loan_company_message" loan_company.slug %}" class="btn btn-success"><span
+                                class="glyphicon-white glyphicon-envelope"></span> Contact {{ loan_company.title }}</a>
+                    </div>
+                </div>
 
-            <p>maximum_term: {{ calculation.maximum_term }}</p>
-
-            <p>current_loan_estimated_remaining_term: {{ calculation.current_loan_estimated_remaining_term }}</p>
-
-            <p>monthly_payment: {{ calculation.monthly_payment }}</p>
-
-            <p>estimated_monthly_savings: {{ calculation.estimated_monthly_savings }}</p>
-
-            <p>estimated_yearly_savings: {{ calculation.estimated_yearly_savings }}</p>
-
-            <p>current_loan_remaining_interest: {{ calculation.current_loan_remaining_interest }}</p>
-
-            <p>loan_interest: {{ calculation.loan_interest }}</p>
-
-            <p>interest_savings: {{ calculation.interest_savings }}</p>
-            <a href="{% url "loan_company_message" loan_company.slug %}" class="btn btn-success"><span class="glyphicon-white glyphicon-envelope"></span> Contact {{ loan_company.title }}</a>
-        </div>
+            <div id="savings"></div>
+            </div>
+        {% else %}
+            <div class="col-md-5">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Get your Loan Estimate</div>
+                    <div class="panel-body">
+                        <p>Enter your needs on the left and click on "Get Estimate" at the bottom of the page to get an
+                            instant estimate or click on the button below to contact us by email</p>
+                        <a href="{% url "loan_company_message" loan_company.slug %}" class="btn btn-success"><span
+                                class="glyphicon-white glyphicon-envelope"></span> Contact {{ loan_company.title }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
     <div class="row">
         <div id="interest_comparison" class="col-md-6">
         </div>
         <div id="payment_comparison" class="col-md-6">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col_md_6">
-            <div id="savings"></div>
         </div>
     </div>
 {% endblock main %}
