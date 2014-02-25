@@ -235,16 +235,16 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">Remaining Interest (est)</div>
-                                <div class="col-md-6"><strong>{{ calculation.current_loan_remaining_interest }}</strong>
+                                <div class="col-md-6"><strong>${{ calculation.current_loan_remaining_interest }}</strong>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">New Interest</div>
-                                <div class="col-md-6"><strong>{{ calculation.loan_interest }}</strong></div>
+                                <div class="col-md-6"><strong>${{ calculation.loan_interest }}</strong></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">Cash Saving</div>
-                                <div class="col-md-6"><strong>{{ calculation.interest_savings }}</strong></div>
+                                <div class="col-md-6"><strong>${{ calculation.interest_savings }}</strong></div>
                             </div>
                         {% endif %}
                         <a href="{% url "loan_company_message" loan_company.slug %}" class="btn btn-success"><span
