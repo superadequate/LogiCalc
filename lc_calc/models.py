@@ -34,6 +34,53 @@ class CurrencyField(models.DecimalField):
             return None
 
 
+class ModelDiffMixin(object):
+    """
+    A model mixin that tracks model fields' values and provides some methods
+    to determine what fields have been changed.
+    """
+
+    def __init__(self, *args, **kwargs):
+        super(ModelDiffMixin, self).__init__(*args, **kwargs)
+        self._initial = self._dict
+
+    @property
+    def _dict(self):
+        """
+        Return the basic fields (no relations) and their values as a dictionary.
+        """
+        return {field.name: field.value_from_object(self) for field in self._meta.fields}
+
+    @property
+    def diff(self):
+        d1 = self._initial
+        d2 = self._dict
+        diffs = [(k, (v, d2[k])) for k, v in d1.items() if v != d2[k]]
+        return dict(diffs)
+
+    @property
+    def has_changed(self):
+        return bool(self.diff)
+
+    @property
+    def changed_fields(self):
+        return self.diff.keys()
+
+    def get_field_diff(self, field_name):
+        """
+        Returns a diff for field if it's changed and None otherwise.
+        """
+        return self.diff.get(field_name, None)
+
+    def save(self, *args, **kwargs):
+        """
+        Saves model and set initial state.
+        """
+        if self.has_changed:
+            super(ModelDiffMixin, self).save(*args, **kwargs)
+            self._initial = self._dict
+
+
 class Named(models.Model):
     name = models.CharField(max_length=64, unique=True,
                             help_text="The name of this object (must be unique).")
@@ -122,7 +169,7 @@ class LoanAddition(models.Model):
                                                       self.value)
 
 
-class LoanCalculation(TimeStamped):
+class LoanCalculation(ModelDiffMixin, TimeStamped):
     """
     User entered data and resulting calculation.
     """
@@ -193,6 +240,15 @@ class LoanCalculation(TimeStamped):
         if self.maximum_term < self.monthly_term:
             self.monthly_term = self.maximum_term
         self.calculate_monthly_payment()
+
+        if self.has_changed:
+            self.id = None
+            kwargs['force_insert'] = True
+            try:
+                del kwargs['force_update']
+            except KeyError:
+                pass
+
         super().save(*args, **kwargs)
 
     def calculate_current_loan_estimated_remaining_term(self):
