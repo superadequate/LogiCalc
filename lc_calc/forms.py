@@ -1,5 +1,3 @@
-from decimal import Decimal
-
 from django import forms
 from django.forms.util import ErrorList
 from django.utils.safestring import mark_safe
@@ -10,34 +8,38 @@ from lc_calc.models import LoanCalculation, LoanCompany, LoanType
 
 class PercentInput(forms.TextInput):
     def render(self, name, value, attrs=None):
+        if value is not None and not isinstance(value, (str, bytes)):
+            value *= 100.0
         result = super(PercentInput, self).render(name, value, attrs)
         return mark_safe("{}%".format(result))
 
 
-class PercentageField(forms.DecimalField):
+class PercentageField(forms.FloatField):
     default_error_messages = {
         'positive': _(u'Must be a positive number.')}
 
-    def prepare_value(self, value):
-        # On error recovery the value comes in as an already prepared string which is wierd
-        if isinstance(value, Decimal):
-            print("prepare_value: {} -> {}".format(value, value*100))
-            value *= 100
-        return super().prepare_value(value)
+    def to_python(self, value):
+        if value and isinstance(value, (str, bytes)):
+            value = value.strip()
+            if value[-1] == '%':
+                value = value[0:-1]
+        value = super().to_python(value)
+        if value:
+            return value / 100.0
+        else:
+            return value
 
     def clean(self, value):
         value = super().clean(value)
-        if value is not None:
-            if value < 0:
-                raise forms.ValidationError(self.error_messages['positive'])
-            print("clean_value: {} -> {}".format(value, value / 100))
-            value = Decimal(value / 100)
-        return value
+        if value and value < 0:
+            raise forms.ValidationError(self.error_messages['positive'])
+        else:
+            return value
 
 
 class LoanCalculationForm(forms.ModelForm):
     loan_company_id = forms.IntegerField(widget=forms.HiddenInput)
-    # current_loan_rate = PercentageField(widget=PercentInput(attrs={'size': 4}))
+    current_loan_rate = PercentageField(widget=PercentInput(), required=False)
     fieldset_info = {
         'required_fields': ['loan_type',
                             'loan_amount',
