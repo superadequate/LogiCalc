@@ -1,7 +1,7 @@
 {% extends "lc_calc/base_loan_company.html" %}
 {% load mezzanine_tags staticfiles  lc_calc_extras %}
 {% block extra_js %}
-    {% if calculation.interest_savings %}
+    {% if calculation.qualified and calculation.interest_savings %}
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
         <script type="text/javascript">
@@ -135,7 +135,8 @@
                         </div>
                     </div>
                     <div class="panel panel-info">
-                        <div class="panel-heading">Existing Loan Information (optional, for a convenient comparison)</div>
+                        <div class="panel-heading">Existing Loan Information (optional, for a convenient comparison)
+                        </div>
                         <div class="panel-body">
                             {% for field in form.current_loan_fields %}
                                 {% if field.errors %}
@@ -201,7 +202,7 @@
                 <input type="hidden" name="loan_company_id" value="{{ loan_company.id }}"/>
             </form>
         </div>
-        {% if calculation.rate %}
+        {% if calculation.qualified %}
             <div class="col-md-5">
                 <div class="panel panel-info">
                     <div class="panel-heading">Your Loan Estimate</div>
@@ -235,7 +236,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">Remaining Interest (est)</div>
-                                <div class="col-md-6"><strong>${{ calculation.current_loan_remaining_interest }}</strong>
+                                <div class="col-md-6">
+                                    <strong>${{ calculation.current_loan_remaining_interest }}</strong>
                                 </div>
                             </div>
                             <div class="row">
@@ -253,6 +255,18 @@
                 </div>
 
                 <div id="savings"></div>
+            </div>
+        {% elif calculation.disqualified %}
+            <div class="col-md-5">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Sorry, you don't qualify for this loan</div>
+                    <div class="panel-body">
+                        <p>Try revising your values on the left or click on the button below to
+                            contact us by email for more help.</p>
+                        <a href="{% url "loan_company_message" loan_company.slug %}" class="btn btn-success"><span
+                                class="glyphicon-white glyphicon-envelope"></span> Contact {{ loan_company.title }}</a>
+                    </div>
+                </div>
             </div>
         {% else %}
             <div class="col-md-5">

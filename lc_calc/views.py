@@ -45,7 +45,7 @@ class LoanCompanyMixin(object):
                     self.calculation = calculation
                 else:
                     self.calculation = None
-            return self.calculation
+        return self.calculation
 
     def put_calculation(self, calculation):
         """

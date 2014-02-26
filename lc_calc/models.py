@@ -243,6 +243,20 @@ class LoanCalculation(ModelDiffMixin, TimeStamped):
         if self.current_loan_remaining_interest:
             return self.current_loan_remaining_interest - self.loan_interest
 
+    @property
+    def qualified(self):
+        try:
+            return self.rate >= 0
+        except AttributeError:
+            return None
+
+    @property
+    def disqualified(self):
+        try:
+            return self.rate < 0
+        except AttributeError:
+            return None
+
     def save(self, *args, **kwargs):
         self.calculate_current_loan_estimated_remaining_term()
         self.calculate_rate()
@@ -272,10 +286,15 @@ class LoanCalculation(ModelDiffMixin, TimeStamped):
         rate = 0.0
         credit_score = self.estimated_credit_score
         for value_type in LoanAdditionType.objects.filter(sum_in_rate_calculation=True,
-                                                               loan_company=self.loan_company,
-                                                               loan_type=self.loan_type):
+                                                          loan_company=self.loan_company,
+                                                          loan_type=self.loan_type):
             value_index = self.get_value_index(value_type)
-            rate += self.get_addition(value_type, credit_score, value_index)
+            addition = self.get_addition(value_type, credit_score, value_index)
+            if addition < 0:
+                # loan is disqualified
+                rate = -1.0
+                break
+            rate += addition
         self.rate = rate
 
     def calculate_maximum_term(self):
@@ -324,8 +343,9 @@ class LoanCalculation(ModelDiffMixin, TimeStamped):
         return loan_additions[0].value
 
     def calculate_monthly_payment(self):
-        monthly_payment = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
-        self.monthly_payment = Decimal(monthly_payment).quantize(Decimal('0.01'))
+        if self.qualified > 0:
+            monthly_payment = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
+            self.monthly_payment = Decimal(monthly_payment).quantize(Decimal('0.01'))
 
 
 class LoanCompanyMessage(TimeStamped):
