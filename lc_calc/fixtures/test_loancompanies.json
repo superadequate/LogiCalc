@@ -1,27 +1,28 @@
 [
 {
+    "pk": 1, 
     "model": "lc_calc.loancompany", 
     "fields": {
-        "logo": "loan_company_logos/paul_whipp_close_cartoon_bw_filter_40.jpg", 
-        "email": "", 
-        "slug": "acle-loans", 
-        "disclosure": "\n<p>Our financial calculator tool will help you analyze your financial needs.\nThe results are based on our quantitative underwriting criteria and accuracy of the inputted data.\nThough we strive to provide you with the most accurate results possible, actual results will be\ndependent upon our full underwriting requirements by a qualified loan officer.\nThe calculations on this page do not assume that the company accepts any fiduciary duties.\nThe calculations provided should not be taken as financial, legal or tax advice.\nOur underwriting criteria is subject to change without notice.</p>\n", 
+        "slug": "hawaiian-institution", 
+        "logo": "", 
         "content": "", 
-        "title": "ACLE Loans", 
-        "site": 1
-    }, 
-    "pk": 1
+        "email": "", 
+        "site": 1, 
+        "disclosure": "\n<p>Our financial calculator tool will help you analyze your financial needs.\nThe results are based on our quantitative underwriting criteria and accuracy of the inputted data.\nThough we strive to provide you with the most accurate results possible, actual results will be\ndependent upon our full underwriting requirements by a qualified loan officer.\nThe calculations on this page do not assume that the company accepts any fiduciary duties.\nThe calculations provided should not be taken as financial, legal or tax advice.\nOur underwriting criteria is subject to change without notice.</p>\n", 
+        "title": "Hawaiian Institution"
+    }
 },
 {
+    "pk": 2, 
     "model": "lc_calc.loancompany", 
     "fields": {
-        "title": "Super Sorta Loans", 
-        "slug": "super-sorta-loans", 
-        "email": "paul.whipp1@gmail.com", 
+        "slug": "wyoming-institution", 
+        "logo": "", 
+        "content": "", 
+        "email": "", 
         "site": 1, 
-        "content": "<p>A company that sorta loans anything.</p>", 
-        "logo": "loan_company_logos/me_icon.jpg"
-    }, 
-    "pk": 2
+        "disclosure": "\n<p>Our financial calculator tool will help you analyze your financial needs.\nThe results are based on our quantitative underwriting criteria and accuracy of the inputted data.\nThough we strive to provide you with the most accurate results possible, actual results will be\ndependent upon our full underwriting requirements by a qualified loan officer.\nThe calculations on this page do not assume that the company accepts any fiduciary duties.\nThe calculations provided should not be taken as financial, legal or tax advice.\nOur underwriting criteria is subject to change without notice.</p>\n", 
+        "title": "Wyoming Institution"
+    }
 }
 ]

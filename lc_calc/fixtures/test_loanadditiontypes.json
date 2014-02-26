@@ -1,0 +1,288 @@
+[
+{
+    "pk": 1, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 1, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 2, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 1, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 3, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 2, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 4, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 2, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 5, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 3, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 6, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 3, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 7, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 4, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Loan to value"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 8, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 4, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 9, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 4, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 10, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 5, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 11, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 5, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 1, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 12, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 1, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Loan to value"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 13, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 1, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 14, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 1, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 15, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 2, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Loan to value"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 16, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 2, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 17, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 2, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 18, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 3, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 19, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 3, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 20, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 5, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 21, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 5, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 22, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 6, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Loan to value"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 23, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 6, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 24, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 6, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term rate"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 25, 
+    "fields": {
+        "sum_in_rate_calculation": true, 
+        "loan_type": 7, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Loan to value"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+},
+{
+    "pk": 26, 
+    "fields": {
+        "sum_in_rate_calculation": false, 
+        "loan_type": 7, 
+        "value_index_method_name": "_get_value_index_loan_to_value", 
+        "loan_company": 2, 
+        "name": "Maximum term"
+    }, 
+    "model": "lc_calc.loanadditiontype"
+}
+]

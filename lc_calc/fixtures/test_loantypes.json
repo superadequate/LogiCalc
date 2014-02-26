@@ -1,1 +1,51 @@
-[{"pk": 3, "model": "lc_calc.loantype", "fields": {"name": "Credit Card"}}, {"pk": 4, "model": "lc_calc.loantype", "fields": {"name": "Recreational Vehicle"}}, {"pk": 5, "model": "lc_calc.loantype", "fields": {"name": "Share Secured"}}, {"pk": 6, "model": "lc_calc.loantype", "fields": {"name": "Personal Loan"}}, {"pk": 7, "model": "lc_calc.loantype", "fields": {"name": "Thirty Year First Mortgage"}}, {"pk": 8, "model": "lc_calc.loantype", "fields": {"name": "Fifteen Year First Mortgage"}}, {"pk": 9, "model": "lc_calc.loantype", "fields": {"name": "Second Mortgage"}}, {"pk": 10, "model": "lc_calc.loantype", "fields": {"name": "Home Equity Line of Credit"}}, {"pk": 11, "model": "lc_calc.loantype", "fields": {"name": "General"}}, {"pk": 12, "model": "lc_calc.loantype", "fields": {"name": "Used Vehicles"}}, {"pk": 13, "model": "lc_calc.loantype", "fields": {"name": "New Vehicles"}}]
+[
+{
+    "model": "lc_calc.loantype", 
+    "pk": 1, 
+    "fields": {
+        "name": "Used Vehicles"
+    }
+},
+{
+    "model": "lc_calc.loantype", 
+    "pk": 2, 
+    "fields": {
+        "name": "New Vehicles"
+    }
+},
+{
+    "model": "lc_calc.loantype", 
+    "pk": 3, 
+    "fields": {
+        "name": "Credit Card"
+    }
+},
+{
+    "model": "lc_calc.loantype", 
+    "pk": 4, 
+    "fields": {
+        "name": "Share Secured"
+    }
+},
+{
+    "model": "lc_calc.loantype", 
+    "pk": 5, 
+    "fields": {
+        "name": "Personal Loan"
+    }
+},
+{
+    "model": "lc_calc.loantype", 
+    "pk": 6, 
+    "fields": {
+        "name": "Other Secured"
+    }
+},
+{
+    "model": "lc_calc.loantype", 
+    "pk": 7, 
+    "fields": {
+        "name": "HELOC"
+    }
+}
+]
