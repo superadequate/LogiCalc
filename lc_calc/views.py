@@ -40,7 +40,11 @@ class LoanCompanyMixin(object):
             if calculation_id is None:
                 self.calculation = None
             else:
-                self.calculation = lcmodels.LoanCalculation.objects.get(id=calculation_id)
+                calculation = lcmodels.LoanCalculation.objects.get(id=calculation_id)
+                if calculation.loan_company == self.get_loan_company():
+                    self.calculation = calculation
+                else:
+                    self.calculation = None
             return self.calculation
 
     def put_calculation(self, calculation):
