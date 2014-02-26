@@ -3,7 +3,7 @@ from lc_calc.utils.related_field_admin import RelatedFieldAdmin
 
 from lc_calc.models import (LoanType,
                             LoanCompany,
-                            LoanAdditionValueType,
+                            LoanAdditionType,
                             LoanAddition,
                             LoanCalculation,
                             LoanCompanyMessage)
@@ -34,13 +34,13 @@ class LoanCalculationAdmin(admin.ModelAdmin):
 admin.site.register(LoanCalculation, LoanCalculationAdmin)
 
 
-class LoanAdditionValueTypeAdmin(admin.ModelAdmin):
-    list_display = ['name', 'loan_company', 'value_index_method_name', 'sum_in_rate_calculation']
+class LoanAdditionTypeAdmin(admin.ModelAdmin):
+    list_display = ['loan_company', 'loan_type', 'name', 'value_index_method_name', 'sum_in_rate_calculation']
     list_editable = ['value_index_method_name', 'sum_in_rate_calculation']
-    list_filter = ['loan_company', 'value_index_method_name', 'sum_in_rate_calculation']
+    list_filter = ['loan_company', 'loan_type', 'name', 'value_index_method_name', 'sum_in_rate_calculation']
     search_fields = ['name']
 
-admin.site.register(LoanAdditionValueType, LoanAdditionValueTypeAdmin)
+admin.site.register(LoanAdditionType, LoanAdditionTypeAdmin)
 
 
 class LoanCompanyAdmin(admin.ModelAdmin):

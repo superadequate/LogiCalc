@@ -120,7 +120,7 @@ class LoanCompany(Slugged, RichText):
         ordering = ['title']
 
 
-class LoanAdditionValueType(Named):
+class LoanAdditionType(models.Model):
     """
     The type of the addition
     """
@@ -129,6 +129,9 @@ class LoanAdditionValueType(Named):
         ('_get_value_index_debt_to_income', 'Debt to income'),
         ('_get_value_index_year_of_collateral', 'Year of collateral'))
     loan_company = models.ForeignKey(LoanCompany)
+    loan_type = models.ForeignKey(LoanType)
+    name = models.CharField(max_length=64,
+                            help_text="The name of this loan type.")
     value_index_method_name = models.CharField(max_length=128,
                                                choices=VALUE_INDEX_METHOD_NAME_CHOICES,
                                                default='_get_value_index_loan_to_value',
@@ -139,7 +142,14 @@ class LoanAdditionValueType(Named):
     def __str__(self):
         vi_description = next((c[1] for c in self.VALUE_INDEX_METHOD_NAME_CHOICES
                                if c[0] == self.value_index_method_name))
-        return "{} ({})".format(super().__str__(), vi_description)
+        return "{} {} ({})".format(self.name, self.loan_company, vi_description)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        if self.pk is None:
+            # improve default for sum_in_rate_calculation
+            if self.sum_in_rate_calculation is None and self.loan_type.name == "Maximum rate":
+                self.sum_in_rate_calculation = False
+        super().save(force_insert, force_update, using, update_fields)
 
 
 class LoanAddition(models.Model):
@@ -148,7 +158,7 @@ class LoanAddition(models.Model):
     """
     loan_company = models.ForeignKey(LoanCompany)
     loan_type = models.ForeignKey(LoanType)
-    value_type = models.ForeignKey(LoanAdditionValueType)
+    value_type = models.ForeignKey(LoanAdditionType)
     credit_score = models.IntegerField(help_text="The minimum credit score for which this value is applicable.")
     value_index = models.IntegerField(help_text="The Addition lookup value (sheet column value).")
     value = models.FloatField(help_text="The value to use in the calculation.")
@@ -206,7 +216,7 @@ class LoanCalculation(ModelDiffMixin, TimeStamped):
 
     @property
     def estimated_yearly_savings(self):
-        if self.estimated_monthly_savings:
+        if self.estimated_monthly_savings is not None:
             return self.estimated_monthly_savings * 12
         else:
             return None
@@ -261,14 +271,17 @@ class LoanCalculation(ModelDiffMixin, TimeStamped):
     def calculate_rate(self):
         rate = 0.0
         credit_score = self.estimated_credit_score
-        for value_type in LoanAdditionValueType.objects.filter(sum_in_rate_calculation=True,
-                                                               loan_company=self.loan_company):
+        for value_type in LoanAdditionType.objects.filter(sum_in_rate_calculation=True,
+                                                               loan_company=self.loan_company,
+                                                               loan_type=self.loan_type):
             value_index = self.get_value_index(value_type)
             rate += self.get_addition(value_type, credit_score, value_index)
         self.rate = rate
 
     def calculate_maximum_term(self):
-        value_type = LoanAdditionValueType.objects.get(name='Maximum term')
+        value_type = LoanAdditionType.objects.get(name='Maximum term',
+                                                  loan_company=self.loan_company,
+                                                  loan_type=self.loan_type)
         credit_score = self.estimated_credit_score
         value_index = self.get_value_index(value_type)
         self.maximum_term = self.get_addition(value_type, credit_score, value_index)
@@ -295,6 +308,8 @@ class LoanCalculation(ModelDiffMixin, TimeStamped):
                                                loan_type=self.loan_type,
                                                value_type=value_type).aggregate(Max(fname))
             max_value = info['{}__max'.format(fname)]
+            if max_value is None:
+                import IPython; IPython.embed()
             if indices[fname] > max_value:
                 indices[fname] = max_value
 

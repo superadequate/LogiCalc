@@ -1,81 +1,165 @@
 LoanCompany_title,LoanType_name,LoanAdditionLookupValueType,Type,credit_score,vi1,vi2,vi3,vi4,vi5,vi6,vi7,vi8,vi9,vi10
-ACLE Loans,Used Vehicles,Loan to value,value_index,,60,70,80,90,100,110,120,130,140,150
-ACLE Loans,Used Vehicles,Loan to value,values,850,0,0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009
-ACLE Loans,Used Vehicles,Loan to value,values,759,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.011
-ACLE Loans,Used Vehicles,Loan to value,values,719,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.011,0.012,0.013
-ACLE Loans,Used Vehicles,Loan to value,values,679,0.006,0.007,0.008,0.009,0.01,0.011,0.012,0.013,0.014,0.015
-ACLE Loans,Used Vehicles,Loan to value,values,649,0.008,0.009,0.01,0.011,0.012,0.013,0.014,0.015,0.016,0.017
-ACLE Loans,Used Vehicles,Loan to value,values,599,0.01,0.011,0.012,0.013,0.014,0.015,0.016,0.017,0.018,0.019
-ACLE Loans,Used Vehicles,Loan to value,values,549,0.012,0.013,0.014,0.015,0.016,0.017,0.018,0.019,0.02,0.021
-ACLE Loans,Used Vehicles,Loan to value,values,449,0.014,0.015,0.016,0.017,0.018,0.019,0.02,0.021,0.022,0.023
-ACLE Loans,Used Vehicles,Loan to value,values,0,0.016,0.017,0.018,0.019,0.02,0.021,0.022,0.023,0.024,0.025
-ACLE Loans,Used Vehicles,Debt to income,value_index,,0,5,15,25,35,45,55,65,150,500
-ACLE Loans,Used Vehicles,Debt to income,values,850,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Debt to income,values,759,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Debt to income,values,719,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Debt to income,values,679,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Debt to income,values,649,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Debt to income,values,599,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Debt to income,values,549,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Debt to income,values,449,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Debt to income,values,0,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,Used Vehicles,Collateral age,value_index,,1900,1984,2004,2009,2012,2014,2014,2014,2014,2014
-ACLE Loans,Used Vehicles,Collateral age,values,850,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Collateral age,values,759,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Collateral age,values,719,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Collateral age,values,679,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Collateral age,values,649,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Collateral age,values,599,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Collateral age,values,549,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Collateral age,values,449,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Collateral age,values,0,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,Used Vehicles,Maximum term,value_index,,1900,1984,2007,2010,2012,2014,2014,2014,2014,2014
-ACLE Loans,Used Vehicles,Maximum term,values,850,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,Used Vehicles,Maximum term,values,759,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,Used Vehicles,Maximum term,values,719,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,Used Vehicles,Maximum term,values,679,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,Used Vehicles,Maximum term,values,649,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,Used Vehicles,Maximum term,values,599,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,Used Vehicles,Maximum term,values,549,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,Used Vehicles,Maximum term,values,449,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,Used Vehicles,Maximum term,values,0,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Loan to value,value_index,,60,70,80,90,100,110,120,130,140,150
-ACLE Loans,New Vehicles,Loan to value,values,850,-0.01,-0.009,-0.008,-0.007,-0.006,-0.005,-0.004,-0.003,-0.002,-0.001
-ACLE Loans,New Vehicles,Loan to value,values,759,-0.008,-0.007,-0.006,-0.005,-0.004,-0.003,-0.002,-0.001,0,0.001
-ACLE Loans,New Vehicles,Loan to value,values,719,-0.006,-0.005,-0.004,-0.003,-0.002,-0.001,0,0.001,0.002,0.003
-ACLE Loans,New Vehicles,Loan to value,values,679,-0.004,-0.003,-0.002,-0.001,0,0.001,0.002,0.003,0.004,0.005
-ACLE Loans,New Vehicles,Loan to value,values,649,-0.002,-0.001,0,0.001,0.002,0.003,0.004,0.005,0.006,0.007
-ACLE Loans,New Vehicles,Loan to value,values,599,0,0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009
-ACLE Loans,New Vehicles,Loan to value,values,549,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.011
-ACLE Loans,New Vehicles,Loan to value,values,449,0.004,0.005,0.006,0.007,0.008,0.009,0.01,0.011,0.012,0.013
-ACLE Loans,New Vehicles,Loan to value,values,0,0.006,0.007,0.008,0.009,0.01,0.011,0.012,0.013,0.014,0.015
-ACLE Loans,New Vehicles,Debt to income,value_index,,0,5,15,25,35,45,55,65,150,500
-ACLE Loans,New Vehicles,Debt to income,values,850,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Debt to income,values,759,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Debt to income,values,719,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Debt to income,values,679,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Debt to income,values,649,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Debt to income,values,599,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Debt to income,values,549,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Debt to income,values,449,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Debt to income,values,0,-0.01,-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.02,0.1
-ACLE Loans,New Vehicles,Collateral age,value_index,,1900,1984,2004,2009,2012,2014,2014,2014,2014,2014
-ACLE Loans,New Vehicles,Collateral age,values,850,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Collateral age,values,759,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Collateral age,values,719,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Collateral age,values,679,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Collateral age,values,649,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Collateral age,values,599,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Collateral age,values,549,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Collateral age,values,449,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Collateral age,values,0,0.02,0.02,0.015,0.01,0.005,0,0,0,0,0
-ACLE Loans,New Vehicles,Maximum term,value_index,,1900,1984,2007,2010,2012,2014,2014,2014,2014,2014
-ACLE Loans,New Vehicles,Maximum term,values,850,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Maximum term,values,759,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Maximum term,values,719,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Maximum term,values,679,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Maximum term,values,649,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Maximum term,values,599,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Maximum term,values,549,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Maximum term,values,449,36,42,48,60,72,72,72,72,72,72
-ACLE Loans,New Vehicles,Maximum term,values,0,36,42,48,60,72,72,72,72,72,72
+Hawaiian Institution,Used Vehicles,Maximum term,value_index,,0,,,,,,,,,
+Hawaiian Institution,Used Vehicles,Maximum term,values,0,60,,,,,,,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,value_index,,6,12,18,24,36,48,60,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,850,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,759,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,719,0.035,0.035,0.035,0.035,0.035,0.035,0.035,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,679,0.045,0.045,0.045,0.045,0.045,0.045,0.045,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,649,0.06,0.1,0.03,0.1125,0.12,0.135,0.145,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,599,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,549,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,449,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,,
+Hawaiian Institution,Used Vehicles,Maximum term rate,values,0,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,,
+Hawaiian Institution,New Vehicles,Maximum term,value_index,,0,,,,,,,,,
+Hawaiian Institution,New Vehicles,Maximum term,values,0,84,,,,,,,,,
+Hawaiian Institution,New Vehicles,Maximum term rate,value_index,,6,12,18,24,36,48,60,72,84,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,850,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,0.0375,0.0475,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,759,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,0.0375,0.0475,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,719,0.035,0.035,0.035,0.035,0.035,0.035,0.035,0.045,0.055,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,679,0.045,0.045,0.045,0.045,0.045,0.045,0.045,0.055,0.065,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,649,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.07,0.08,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,599,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.09,0.1,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,549,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.09,0.1,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,449,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.09,0.1,
+Hawaiian Institution,New Vehicles,Maximum term rate,values,0,0.08,0.08,0.08,0.08,0.08,0.08,0.08,0.09,0.1,
+Hawaiian Institution,Credit Card,Maximum term,value_index,,0,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term,values,0,999,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,value_index,,999,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,850,0.099,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,759,0.099,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,719,0.099,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,679,0.119,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,649,0.119,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,599,0.119,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,549,0.119,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,449,-1,,,,,,,,,
+Hawaiian Institution,Credit Card,Maximum term rate,values,0,-1,,,,,,,,,
+Hawaiian Institution,Share Secured,Loan to value,value_index,,0,,,,,,,,,
+Hawaiian Institution,Share Secured,Loan to value,values,0,0.02,,,,,,,,,
+Hawaiian Institution,Share Secured,Maximum term,value_index,,0,,,,,,,,,
+Hawaiian Institution,Share Secured,Maximum term,values,0,60,,,,,,,,,
+Hawaiian Institution,Share Secured,Maximum term rate,value_index,,6,12,18,24,36,48,60,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,850,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,759,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,719,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,679,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,649,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,599,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,549,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,449,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Share Secured,Maximum term rate,values,0,0.03,0.03,0.03,0.03,0.03,0.04,0.05,,,
+Hawaiian Institution,Personal Loan,Maximum term,value_index,,0,,,,,,,,,
+Hawaiian Institution,Personal Loan,Maximum term,values,0,60,,,,,,,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,value_index,,6,12,18,24,36,48,60,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,850,0.07,0.07,0.0825,0.0825,0.09,0.105,0.115,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,759,0.07,0.07,0.0825,0.0825,0.09,0.105,0.115,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,719,0.075,0.075,0.0875,0.0875,0.095,0.11,0.12,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,679,0.085,0.085,0.0975,0.0975,0.105,0.12,0.13,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,649,0.1,0.1,0.03,0.1125,0.12,0.135,0.145,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,599,0.12,0.12,0.03,0.1325,0.14,0.155,0.165,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,549,-1,-1,-1,-1,-1,-1,-1,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,449,-1,-1,-1,-1,-1,-1,-1,,,
+Hawaiian Institution,Personal Loan,Maximum term rate,values,0,-1,-1,-1,-1,-1,-1,-1,,,
+Wyoming Institution,Used Vehicles,Loan to value,value_index,,60,70,80,90,100,110,120,130,140,150
+Wyoming Institution,Used Vehicles,Loan to value,values,850,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,Used Vehicles,Loan to value,values,759,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,Used Vehicles,Loan to value,values,719,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,Used Vehicles,Loan to value,values,679,0,0,0,0,0,0,-1,-1,-1,-1
+Wyoming Institution,Used Vehicles,Loan to value,values,649,0,0,0,0,0,-1,-1,-1,-1,-1
+Wyoming Institution,Used Vehicles,Loan to value,values,599,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,Used Vehicles,Loan to value,values,549,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,Used Vehicles,Loan to value,values,449,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,Used Vehicles,Loan to value,values,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,Used Vehicles,Maximum term,value_index,,0,,,,,,,,,
+Wyoming Institution,Used Vehicles,Maximum term,values,0,72,,,,,,,,,
+Wyoming Institution,Used Vehicles,Maximum term rate,value_index,,6,12,18,24,36,48,60,72,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,850,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,0.0425,0.045,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,759,0.04,0.04,0.04,0.04,0.04,0.04,0.0425,0.045,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,719,0.05,0.05,0.05,0.05,0.05,0.05,0.0525,0.055,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,679,0.0675,0.0675,0.0675,0.0675,0.0675,0.0675,0.07,0.0875,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,649,0.0975,0.0975,0.0975,0.0975,0.0975,0.0975,0.1,0.1175,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,599,0.18,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,549,0.18,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,449,0.18,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,
+Wyoming Institution,Used Vehicles,Maximum term rate,values,0,0.18,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,
+Wyoming Institution,New Vehicles,Loan to value,value_index,,60,70,80,90,100,110,120,130,140,150
+Wyoming Institution,New Vehicles,Loan to value,values,850,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,New Vehicles,Loan to value,values,759,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,New Vehicles,Loan to value,values,719,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,New Vehicles,Loan to value,values,679,0,0,0,0,0,0,-1,-1,-1,-1
+Wyoming Institution,New Vehicles,Loan to value,values,649,0,0,0,0,0,-1,-1,-1,-1,-1
+Wyoming Institution,New Vehicles,Loan to value,values,599,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,New Vehicles,Loan to value,values,549,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,New Vehicles,Loan to value,values,449,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,New Vehicles,Loan to value,values,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,New Vehicles,Maximum term,value_index,,0,,,,,,,,,
+Wyoming Institution,New Vehicles,Maximum term,values,0,72,,,,,,,,,
+Wyoming Institution,New Vehicles,Maximum term rate,value_index,,6,12,18,24,36,48,60,72,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,850,0.0275,0.0275,0.0275,0.0275,0.0275,0.0275,0.0425,0.045,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,759,0.04,0.04,0.04,0.04,0.04,0.04,0.0425,0.045,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,719,0.05,0.05,0.05,0.05,0.05,0.05,0.0525,0.055,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,679,0.0675,0.0675,0.0675,0.0675,0.0675,0.0675,0.07,0.0875,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,649,0.0975,0.0975,0.0975,0.0975,0.0975,0.0975,0.1,0.1175,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,599,0.18,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,549,0.18,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,449,0.18,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,
+Wyoming Institution,New Vehicles,Maximum term rate,values,0,0.18,0.18,0.18,0.18,0.18,0.18,0.18,0.18,,
+Wyoming Institution,Credit Card,Maximum term,value_index,,0,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term,values,0,999,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,value_index,,999,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,850,0.089,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,759,0.089,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,719,0.099,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,679,0.109,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,649,0.109,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,599,-1,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,549,-1,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,449,-1,,,,,,,,,
+Wyoming Institution,Credit Card,Maximum term rate,values,0,-1,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term,value_index,,0,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term,values,0,72,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,value_index,,72,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,850,0.095,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,759,0.095,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,719,0.1,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,679,0.11,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,649,0.11,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,599,-1,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,549,-1,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,449,-1,,,,,,,,,
+Wyoming Institution,Personal Loan,Maximum term rate,values,0,-1,,,,,,,,,
+Wyoming Institution,Other Secured,Loan to value,value_index,,60,70,80,90,100,110,120,130,140,150
+Wyoming Institution,Other Secured,Loan to value,values,850,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,Other Secured,Loan to value,values,759,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,Other Secured,Loan to value,values,719,0,0,0,0,0,0,0,-1,-1,-1
+Wyoming Institution,Other Secured,Loan to value,values,679,0,0,0,0,0,0,-1,-1,-1,-1
+Wyoming Institution,Other Secured,Loan to value,values,649,0,0,0,0,0,-1,-1,-1,-1,-1
+Wyoming Institution,Other Secured,Loan to value,values,599,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,Other Secured,Loan to value,values,549,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,Other Secured,Loan to value,values,449,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,Other Secured,Loan to value,values,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,Other Secured,Maximum term,value_index,,0,,,,,,,,,
+Wyoming Institution,Other Secured,Maximum term,values,0,120,,,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,value_index,,60,72,120,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,850,0.0975,0.1025,0.1125,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,759,0.0975,0.1025,0.1125,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,719,0.0975,0.1025,0.1125,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,679,0.1025,0.1075,0.1175,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,649,0.1125,0.1175,0.1275,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,599,0.18,0.18,0.18,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,549,0.18,0.18,0.18,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,449,0.18,0.18,0.18,,,,,,,
+Wyoming Institution,Other Secured,Maximum term rate,values,0,0.18,0.18,0.18,,,,,,,
+Wyoming Institution,HELOC,Loan to value,value_index,,60,70,80,90,100,110,120,130,140,150
+Wyoming Institution,HELOC,Loan to value,values,850,0,0,0,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Loan to value,values,759,0.0525,0.0525,0.0525,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Loan to value,values,719,0.0625,0.0625,0.0625,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Loan to value,values,679,0.0825,0.0825,0.0825,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Loan to value,values,649,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Loan to value,values,599,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Loan to value,values,549,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Loan to value,values,449,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Loan to value,values,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+Wyoming Institution,HELOC,Maximum term,value_index,,0,,,,,,,,,
+Wyoming Institution,HELOC,Maximum term,values,0,72,,,,,,,,,

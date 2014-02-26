@@ -2,11 +2,11 @@
 Import a csv file containing loan data into the db.
 """
 import csv
-from lc_calc.models import LoanCompany, LoanType, LoanAdditionValueType, LoanAddition
+from lc_calc.models import LoanCompany, LoanType, LoanAdditionType, LoanAddition
 
 
 class LoanDataImporter(object):
-    value_keys = ['vi{0}'.format(i) for i in range(1, 11)]
+    value_keys = ['vi{0}'.format(i) for i in range(1, 51)]
     value_indices = None
 
     @staticmethod
@@ -24,16 +24,27 @@ class LoanDataImporter(object):
                 # Set the reference data and current indices
                 self.loan_company = self.get_or_create(LoanCompany, title=row['LoanCompany_title'])
                 self.loan_type = self.get_or_create(LoanType, name=row['LoanType_name'])
-                self.value_type = self.get_or_create(LoanAdditionValueType,
+                self.value_type = self.get_or_create(LoanAdditionType,
                                                      name=row['LoanAdditionLookupValueType'],
-                                                     loan_company=self.loan_company)
-                self.value_indices = [(k, int(row[k])) for k in self.value_keys]
+                                                     loan_company=self.loan_company,
+                                                     loan_type=self.loan_type)
+
+                value_indices = list()
+                for k in self.value_keys:
+                    try:
+                        value_indices.append((k, int(row[k])))
+                    except (ValueError, KeyError):
+                        # Either no more values for this particular table or no more columns in this csv
+                        break
+
+                self.value_indices = value_indices
 
                 # Delete old values
                 for vo in LoanAddition.objects.filter(loan_company=self.loan_company,
                                                       loan_type=self.loan_type,
                                                       value_type=self.value_type,):
                     vo.delete()
+
             elif row['Type'] == 'values':
 
                 # Add the new values

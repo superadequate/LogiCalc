@@ -2,9 +2,11 @@
 {% load mezzanine_tags %}
 {% block main %}
     <div class="row">
-        <div class="col-md-4">
-            <img width="90%" src="{{ loan_company.logo.url }}"/>
-        </div>
+        {% if loan_company.logo %}
+            <div class="col-md-4">
+                <img width="90%" src="{{ loan_company.logo.url }}"/>
+            </div>
+        {% endif %}
         <div class="col-md-8">
             {{ loan_company.content|richtext_filters|safe }}
         </div>
