@@ -324,7 +324,8 @@ class LoanCalculation(ModelDiffMixin, TimeStamped):
         return loan_additions[0].value
 
     def calculate_monthly_payment(self):
-        self.monthly_payment = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
+        monthly_payment = pmt(self.rate / 12.0, self.monthly_term, -self.loan_amount)
+        self.monthly_payment = Decimal(monthly_payment).quantize(Decimal('0.01'))
 
 
 class LoanCompanyMessage(TimeStamped):
