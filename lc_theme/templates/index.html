@@ -17,13 +17,13 @@
     </p>
     
     <ul>
-        <li>Check out an existing company calculator page:<br>
+        Check out an existing company calculator page:<br>
             <ul>
                 {% for company in loan_companies %}
                     <li><a href="{% url "calculation" company.slug %}">{{ company.title }}</a></li>
                 {% endfor %}
             </ul>
-        </li>
+        
   
     </ul>
 {% endblock %}
