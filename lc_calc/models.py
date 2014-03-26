@@ -327,8 +327,7 @@ class LoanCalculation(ModelDiffMixin, TimeStamped):
                                                loan_type=self.loan_type,
                                                value_type=value_type).aggregate(Max(fname))
             max_value = info['{}__max'.format(fname)]
-            if max_value is None:
-                import IPython; IPython.embed()
+
             if indices[fname] > max_value:
                 indices[fname] = max_value
 
