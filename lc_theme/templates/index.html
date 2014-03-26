@@ -18,11 +18,11 @@
     
     <ul>
         Check out an existing company calculator page:<br>
-            <ul>
+            
                 {% for company in loan_companies %}
                     <li><a href="{% url "calculation" company.slug %}">{{ company.title }}</a></li>
                 {% endfor %}
-            </ul>
+           
         
   
     </ul>
